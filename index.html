@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate Survivor Series</title>
+  <style>
+    :root{
+      --bg:#07070d; --panel:#151521; --panel2:#202032; --text:#f7f7fb; --muted:#bdbdca;
+      --gold:#f4c542; --red:#e84855; --blue:#3498db; --green:#28a745; --orange:#f39c12; --purple:#8e44ad;
+      --border:rgba(255,255,255,.14); --shadow:0 18px 50px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#272742 0,#090911 48%,#030306 100%);color:var(--text);min-height:100vh;}
+    button,input{font:inherit}
+    button{border:0;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer;background:var(--gold);color:#111;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:.15s transform,.15s opacity,.15s filter}
+    button:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    button.secondary{background:#292a3d;color:var(--text);border:1px solid var(--border)}
+    button.danger{background:var(--red);color:white}
+    button:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:none}
+    input{border:1px solid var(--border);border-radius:10px;padding:12px;background:#0d0d16;color:var(--text);width:100%;max-width:300px}
+    .wrap{max-width:1180px;margin:0 auto;padding:22px}
+    .screen{display:none}.screen.active{display:block}
+    .hero{min-height:92vh;display:none;align-items:center;justify-content:center;text-align:center}.hero.active{display:flex}
+    .hero-card,.panel{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid var(--border);border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+    .hero-card{max-width:880px}.panel{margin:20px 0}
+    h1{font-size:clamp(2.4rem,8vw,5.2rem);line-height:.95;margin:0 0 14px;color:var(--gold);letter-spacing:-2px;text-transform:uppercase}
+    h2{font-size:clamp(1.6rem,4vw,2.7rem);margin:0 0 14px;color:var(--gold)}
+    h3{margin:8px 0 10px} p,li{color:var(--muted);line-height:1.55} ul{display:inline-block;text-align:left}.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}.left-actions{justify-content:flex-start}
+    .footer-note{font-size:.78rem;color:#858697;margin-top:26px;line-height:1.4;text-align:center}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    .brand{font-weight:1000;color:var(--gold);letter-spacing:.5px;text-transform:uppercase}.stat-row{display:flex;gap:10px;flex-wrap:wrap}.pill{border:1px solid var(--border);background:#161725;border-radius:999px;padding:8px 12px;font-weight:900}.pill span{color:var(--gold)}
+    .game-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:18px}.slots{display:grid;gap:12px}.slot{border:1px solid var(--border);background:#11121d;border-radius:16px;padding:14px;border-left:7px solid #666;min-height:82px}.slot.empty{opacity:.82}.slot-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:900}.slot-name{font-size:1.15rem;font-weight:1000;margin-top:6px}.slot-meta{font-size:.88rem;color:var(--muted);margin-top:4px}.slot.Main-Eventer,.wrestler-card.Main-Eventer{border-left-color:var(--purple)}.slot.Powerhouse,.wrestler-card.Powerhouse{border-left-color:var(--blue)}.slot.Specialist,.wrestler-card.Specialist{border-left-color:var(--green)}.slot.Entertainer,.wrestler-card.Entertainer{border-left-color:var(--orange)}
+    .year-box{text-align:center;background:#10111c;border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:14px}.year-label{font-size:.85rem;color:var(--muted);font-weight:900;text-transform:uppercase}.year-number{font-size:4rem;line-height:1;color:var(--gold);font-weight:1000;margin:8px 0}.hint{font-size:.95rem;color:var(--muted)}
+    .wrestler-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}.wrestler-card{background:#11121d;border:1px solid var(--border);border-left:7px solid #666;border-radius:16px;padding:14px;position:relative;min-height:165px;cursor:pointer;transition:.15s transform,.15s background}.wrestler-card:hover{transform:translateY(-2px);background:#18192a}.wrestler-card.disabled{opacity:.45;cursor:not-allowed}.wrestler-card.disabled:hover{transform:none;background:#11121d}.wrestler-year{color:var(--muted);font-weight:900}.wrestler-name{font-size:1.15rem;font-weight:1000;margin:8px 0}.wrestler-score{position:absolute;right:14px;top:12px;font-size:2rem;color:var(--gold);font-weight:1000;text-align:right;line-height:1}.wrestler-score small{display:block;font-size:.62rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}.cat-badge{display:inline-block;margin-top:8px;border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:1000;color:white}.badge-Main-Eventer{background:var(--purple)}.badge-Powerhouse{background:var(--blue)}.badge-Specialist{background:var(--green)}.badge-Entertainer{background:var(--orange)}.slot-buttons{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}.slot-buttons button{font-size:.9rem;margin:4px 4px 0 0;padding:9px 10px}.lock-reason{display:block;margin-top:12px;color:var(--muted);font-size:.88rem;font-weight:800}
+    .result-banner{font-size:clamp(2.5rem,8vw,5rem);font-weight:1000;color:var(--gold);text-align:center;margin:10px 0;text-transform:uppercase}.score-display{text-align:center;font-size:1.35rem;font-weight:900}.score-display span{color:var(--gold)}
+    .leaderboard-entry{display:grid;grid-template-columns:70px 1fr 80px;gap:12px;align-items:start;background:#11121d;border:1px solid var(--border);border-radius:16px;padding:14px;margin:10px 0}.team-small{color:var(--muted);font-size:.9rem;line-height:1.45;margin-top:5px}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:10;align-items:center;justify-content:center;padding:18px}.modal.active{display:flex}.modal-card{max-width:680px;max-height:86vh;overflow:auto;background:#151522;border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+    .notice{background:#10111c;border:1px solid var(--border);border-radius:16px;padding:14px;color:var(--muted)}
+    @media(max-width:760px){.game-grid{grid-template-columns:1fr}.topbar{align-items:flex-start}.leaderboard-entry{grid-template-columns:46px 1fr}.leaderboard-entry>div:last-child{grid-column:2}.year-number{font-size:3rem}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section id="home" class="screen hero active">
+    <div class="hero-card">
+      <h1>Ultimate Survivor Series</h1>
+      <p>Create the ultimate 5-man Survivor Series team by drafting wrestlers from across WWF/WWE history.</p>
+      <p>Fill all five positions: <strong>Main Eventer</strong>, <strong>Powerhouse</strong>, <strong>Specialist</strong>, <strong>Entertainer</strong> and <strong>Team Captain</strong>.</p>
+      <p>Use your one re-spin wisely and aim for a perfect <strong>5-0</strong> record.</p>
+      <p>🏆 Top 10 teams earn a place in the Hall of Fame.</p>
+      <div class="actions">
+        <button id="homeInstructionsBtn" type="button">How to Play</button>
+        <button id="homeStartBtn" type="button">Start Game</button>
+        <button id="homeHofBtn" type="button" class="secondary">Hall of Fame</button>
+      </div>
+      <div class="footer-note">This website is an independent fan project and is not affiliated with, endorsed by, or sponsored by World Wrestling Entertainment, LLC or WWE.</div>
+    </div>
+  </section>
+
+  <section id="instructions" class="screen">
+    <div class="panel">
+      <h2>How to Play</h2>
+      <p>You need to select 5 wrestlers to create your Ultimate Survivor Series Team.</p>
+      <ul>
+        <li>Your team must contain 1 Main Eventer, 1 Powerhouse, 1 Specialist, 1 Entertainer and 1 Team Captain.</li>
+        <li>The Team Captain can be any category.</li>
+        <li>Once a year has been used, it cannot be used again.</li>
+        <li>Once a wrestler has been selected, they cannot be selected again.</li>
+        <li>You are allowed one re-spin for the entire game. Use it wisely.</li>
+      </ul>
+      <p>Wrestler ratings represent their importance and presentation during that specific calendar year. Ratings are not intended to compare wrestlers across different eras.</p>
+      <h3>Record Brackets</h3>
+      <div class="notice">Under 450 = 0-5<br>450-459 = 1-4<br>460-469 = 2-3<br>470-479 = 3-2<br>480-484 = 4-1<br>485+ = 5-0</div>
+      <div class="actions left-actions">
+        <button id="instructionsStartBtn" type="button">Start Game</button>
+        <button id="instructionsHomeBtn" type="button" class="secondary">Home</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="topbar">
+      <div class="brand">Ultimate Survivor Series</div>
+      <div class="stat-row">
+        <div class="pill">Pick <span id="turnPill">1/5</span></div>
+        <div class="pill">Team Score <span id="scorePill">0</span></div>
+        <div class="pill">Re-spin <span id="respinPill">Available</span></div>
+      </div>
+      <div class="actions" style="margin:0">
+        <button id="gameInfoBtn" type="button" class="secondary">Info</button>
+        <button id="gameHofBtn" type="button" class="secondary">Hall of Fame</button>
+        <button id="gameRestartBtn" type="button" class="danger">Restart</button>
+      </div>
+    </div>
+
+    <div class="game-grid">
+      <div class="panel">
+        <h2>Your Team</h2>
+        <div id="slots" class="slots"></div>
+      </div>
+      <div class="panel">
+        <div class="year-box">
+          <div class="year-label">Current Year</div>
+          <div id="currentYear" class="year-number">—</div>
+          <div id="yearHelp" class="hint">Press Spin Year to begin.</div>
+          <div class="actions">
+            <button id="spinBtn" type="button">Spin Year</button>
+            <button id="respinBtn" type="button" class="secondary" disabled>Use Re-spin</button>
+          </div>
+        </div>
+        <div id="wrestlerList" class="wrestler-list"></div>
+      </div>
+    </div>
+    <div class="footer-note">This website is an independent fan project and is not affiliated with, endorsed by, or sponsored by World Wrestling Entertainment, LLC or WWE.</div>
+  </section>
+
+  <section id="results" class="screen">
+    <div class="panel">
+      <h2>Final Result</h2>
+      <div id="resultBanner" class="result-banner">0-5</div>
+      <div class="score-display">Final Team Score: <span id="finalScore">0</span></div>
+      <div id="finalTeam" class="slots" style="margin-top:18px"></div>
+      <div id="qualifyBox" class="notice" style="display:none;margin-top:18px">
+        <strong>You made the Top 10!</strong><br><br>
+        Add your nickname to save this team in the Hall of Fame.<br><br>
+        <input id="nickname" placeholder="Nickname" maxlength="24" />
+        <button id="saveScoreBtn" type="button">Save to Hall of Fame</button>
+      </div>
+      <div id="missBox" class="notice" style="display:none;margin-top:18px">This team did not crack the current Top 10.</div>
+      <div class="actions">
+        <button id="resultsPlayAgainBtn" type="button">Play Again</button>
+        <button id="resultsHofBtn" type="button" class="secondary">Hall of Fame</button>
+        <button id="copyResultBtn" type="button" class="secondary">Copy Result</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="hof" class="screen">
+    <div class="panel">
+      <h2>Hall of Fame</h2>
+      <p>The Hall of Fame contains the Top 10 highest-scoring teams ever assembled. If your score is high enough to enter the Top 10, you can save your nickname and team.</p>
+      <div id="leaderboard"></div>
+      <div class="actions left-actions">
+        <button id="hofStartBtn" type="button">Start Game</button>
+        <button id="hofHomeBtn" type="button" class="secondary">Home</button>
+        <button id="clearHofBtn" type="button" class="danger">Clear Hall of Fame</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="infoModal" class="modal">
+  <div class="modal-card">
+    <h2>Game Rules</h2>
+    <p>You need to select 5 wrestlers to create your Ultimate Survivor Series Team.</p>
+    <ul>
+      <li>Your team must contain 1 Main Eventer, 1 Powerhouse, 1 Specialist, 1 Entertainer and 1 Team Captain.</li>
+      <li>The Team Captain can be any category.</li>
+      <li>Once a year has been used, it cannot be used again.</li>
+      <li>Once a wrestler has been selected, they cannot be selected again.</li>
+      <li>You are allowed one re-spin for the entire game.</li>
+    </ul>
+    <p>Wrestler ratings represent their importance and presentation during that specific calendar year. Ratings are not intended to compare wrestlers across different eras.</p>
+    <p>Build the strongest team possible and aim for a perfect 5-0 record.</p>
+    <div class="actions"><button id="closeInfoBtn" type="button">Close</button></div>
+  </div>
+</div>
+
+<script>
+const DATA = [{"year": 1985, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 99}, {"year": 1985, "wrestler": "Roddy Piper", "category": "Entertainer", "overall": 95}, {"year": 1985, "wrestler": "Andre the Giant", "category": "Powerhouse", "overall": 94}, {"year": 1985, "wrestler": "Paul Orndorff", "category": "Main Eventer", "overall": 92}, {"year": 1985, "wrestler": "Junkyard Dog", "category": "Entertainer", "overall": 91}, {"year": 1985, "wrestler": "Randy Savage", "category": "Specialist", "overall": 90}, {"year": 1985, "wrestler": "Tito Santana", "category": "Specialist", "overall": 89}, {"year": 1985, "wrestler": "Don Muraco", "category": "Powerhouse", "overall": 87}, {"year": 1985, "wrestler": "Iron Sheik", "category": "Powerhouse", "overall": 86}, {"year": 1985, "wrestler": "Nikolai Volkoff", "category": "Powerhouse", "overall": 85}, {"year": 1986, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 99}, {"year": 1986, "wrestler": "Randy Savage", "category": "Specialist", "overall": 94}, {"year": 1986, "wrestler": "Paul Orndorff", "category": "Main Eventer", "overall": 93}, {"year": 1986, "wrestler": "Andre the Giant", "category": "Powerhouse", "overall": 92}, {"year": 1986, "wrestler": "Jake Roberts", "category": "Entertainer", "overall": 91}, {"year": 1986, "wrestler": "Roddy Piper", "category": "Entertainer", "overall": 90}, {"year": 1986, "wrestler": "Junkyard Dog", "category": "Entertainer", "overall": 89}, {"year": 1986, "wrestler": "King Kong Bundy", "category": "Powerhouse", "overall": 88}, {"year": 1986, "wrestler": "Tito Santana", "category": "Specialist", "overall": 87}, {"year": 1986, "wrestler": "Nikolai Volkoff", "category": "Powerhouse", "overall": 86}, {"year": 1987, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 99}, {"year": 1987, "wrestler": "Randy Savage", "category": "Specialist", "overall": 96}, {"year": 1987, "wrestler": "Andre the Giant", "category": "Powerhouse", "overall": 95}, {"year": 1987, "wrestler": "Honky Tonk Man", "category": "Entertainer", "overall": 92}, {"year": 1987, "wrestler": "Jake Roberts", "category": "Entertainer", "overall": 91}, {"year": 1987, "wrestler": "Ted DiBiase", "category": "Main Eventer", "overall": 90}, {"year": 1987, "wrestler": "Roddy Piper", "category": "Entertainer", "overall": 89}, {"year": 1987, "wrestler": "King Kong Bundy", "category": "Powerhouse", "overall": 88}, {"year": 1987, "wrestler": "Rick Rude", "category": "Specialist", "overall": 87}, {"year": 1987, "wrestler": "Ultimate Warrior", "category": "Powerhouse", "overall": 86}, {"year": 1988, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 98}, {"year": 1988, "wrestler": "Randy Savage", "category": "Main Eventer", "overall": 97}, {"year": 1988, "wrestler": "Ted DiBiase", "category": "Main Eventer", "overall": 94}, {"year": 1988, "wrestler": "Andre the Giant", "category": "Powerhouse", "overall": 92}, {"year": 1988, "wrestler": "Ultimate Warrior", "category": "Powerhouse", "overall": 91}, {"year": 1988, "wrestler": "Rick Rude", "category": "Specialist", "overall": 90}, {"year": 1988, "wrestler": "Jake Roberts", "category": "Specialist", "overall": 90}, {"year": 1988, "wrestler": "Honky Tonk Man", "category": "Entertainer", "overall": 89}, {"year": 1988, "wrestler": "Big Boss Man", "category": "Powerhouse", "overall": 88}, {"year": 1988, "wrestler": "Brutus Beefcake", "category": "Entertainer", "overall": 87}, {"year": 1989, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 98}, {"year": 1989, "wrestler": "Randy Savage", "category": "Main Eventer", "overall": 97}, {"year": 1989, "wrestler": "Ultimate Warrior", "category": "Powerhouse", "overall": 94}, {"year": 1989, "wrestler": "Ted DiBiase", "category": "Main Eventer", "overall": 93}, {"year": 1989, "wrestler": "Rick Rude", "category": "Specialist", "overall": 92}, {"year": 1989, "wrestler": "Andre the Giant", "category": "Powerhouse", "overall": 90}, {"year": 1989, "wrestler": "Big Boss Man", "category": "Powerhouse", "overall": 90}, {"year": 1989, "wrestler": "Mr Perfect", "category": "Specialist", "overall": 89}, {"year": 1989, "wrestler": "Jake Roberts", "category": "Entertainer", "overall": 89}, {"year": 1989, "wrestler": "Roddy Piper", "category": "Entertainer", "overall": 88}, {"year": 1990, "wrestler": "Ultimate Warrior", "category": "Main Eventer", "overall": 98}, {"year": 1990, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 97}, {"year": 1990, "wrestler": "Randy Savage", "category": "Main Eventer", "overall": 95}, {"year": 1990, "wrestler": "Ted DiBiase", "category": "Main Eventer", "overall": 94}, {"year": 1990, "wrestler": "Mr Perfect", "category": "Specialist", "overall": 93}, {"year": 1990, "wrestler": "Rick Rude", "category": "Specialist", "overall": 92}, {"year": 1990, "wrestler": "Earthquake", "category": "Powerhouse", "overall": 91}, {"year": 1990, "wrestler": "Jake Roberts", "category": "Entertainer", "overall": 91}, {"year": 1990, "wrestler": "Big Boss Man", "category": "Powerhouse", "overall": 89}, {"year": 1990, "wrestler": "Dusty Rhodes", "category": "Entertainer", "overall": 88}, {"year": 1991, "wrestler": "Hulk Hogan", "category": "Main Eventer", "overall": 98}, {"year": 1991, "wrestler": "Ultimate Warrior", "category": "Main Eventer", "overall": 97}, {"year": 1991, "wrestler": "Randy Savage", "category": "Entertainer", "overall": 96}, {"year": 1991, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 95}, {"year": 1991, "wrestler": "Ric Flair", "category": "Main Eventer", "overall": 94}, {"year": 1991, "wrestler": "Jake Roberts", "category": "Entertainer", "overall": 93}, {"year": 1991, "wrestler": "Mr Perfect", "category": "Specialist", "overall": 92}, {"year": 1991, "wrestler": "Ted DiBiase", "category": "Main Eventer", "overall": 91}, {"year": 1991, "wrestler": "Bret Hart", "category": "Specialist", "overall": 90}, {"year": 1991, "wrestler": "Earthquake", "category": "Powerhouse", "overall": 89}, {"year": 1992, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 96}, {"year": 1992, "wrestler": "Ric Flair", "category": "Main Eventer", "overall": 95}, {"year": 1992, "wrestler": "Randy Savage", "category": "Main Eventer", "overall": 94}, {"year": 1992, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 93}, {"year": 1992, "wrestler": "Ultimate Warrior", "category": "Powerhouse", "overall": 92}, {"year": 1992, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 91}, {"year": 1992, "wrestler": "Mr Perfect", "category": "Specialist", "overall": 90}, {"year": 1992, "wrestler": "British Bulldog", "category": "Specialist", "overall": 89}, {"year": 1992, "wrestler": "Razor Ramon", "category": "Entertainer", "overall": 88}, {"year": 1992, "wrestler": "Papa Shango", "category": "Entertainer", "overall": 87}, {"year": 1993, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 95}, {"year": 1993, "wrestler": "Yokozuna", "category": "Powerhouse", "overall": 94}, {"year": 1993, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 93}, {"year": 1993, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 92}, {"year": 1993, "wrestler": "Razor Ramon", "category": "Entertainer", "overall": 91}, {"year": 1993, "wrestler": "Lex Luger", "category": "Main Eventer", "overall": 90}, {"year": 1993, "wrestler": "Mr Perfect", "category": "Specialist", "overall": 89}, {"year": 1993, "wrestler": "Doink", "category": "Entertainer", "overall": 88}, {"year": 1993, "wrestler": "Crush", "category": "Powerhouse", "overall": 87}, {"year": 1993, "wrestler": "Bam Bam Bigelow", "category": "Powerhouse", "overall": 86}, {"year": 1994, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 96}, {"year": 1994, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 95}, {"year": 1994, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 94}, {"year": 1994, "wrestler": "Razor Ramon", "category": "Entertainer", "overall": 93}, {"year": 1994, "wrestler": "Diesel", "category": "Powerhouse", "overall": 92}, {"year": 1994, "wrestler": "Owen Hart", "category": "Specialist", "overall": 91}, {"year": 1994, "wrestler": "Yokozuna", "category": "Powerhouse", "overall": 90}, {"year": 1994, "wrestler": "Lex Luger", "category": "Main Eventer", "overall": 89}, {"year": 1994, "wrestler": "Jeff Jarrett", "category": "Entertainer", "overall": 88}, {"year": 1994, "wrestler": "Bam Bam Bigelow", "category": "Powerhouse", "overall": 87}, {"year": 1995, "wrestler": "Diesel", "category": "Main Eventer", "overall": 93}, {"year": 1995, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 92}, {"year": 1995, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 91}, {"year": 1995, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 90}, {"year": 1995, "wrestler": "Razor Ramon", "category": "Entertainer", "overall": 89}, {"year": 1995, "wrestler": "Owen Hart", "category": "Specialist", "overall": 88}, {"year": 1995, "wrestler": "Yokozuna", "category": "Powerhouse", "overall": 87}, {"year": 1995, "wrestler": "British Bulldog", "category": "Specialist", "overall": 86}, {"year": 1995, "wrestler": "Jeff Jarrett", "category": "Entertainer", "overall": 85}, {"year": 1995, "wrestler": "Bam Bam Bigelow", "category": "Powerhouse", "overall": 84}, {"year": 1996, "wrestler": "Shawn Michaels", "category": "Main Eventer", "overall": 97}, {"year": 1996, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 96}, {"year": 1996, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 95}, {"year": 1996, "wrestler": "Steve Austin", "category": "Specialist", "overall": 94}, {"year": 1996, "wrestler": "Vader", "category": "Powerhouse", "overall": 93}, {"year": 1996, "wrestler": "Owen Hart", "category": "Specialist", "overall": 92}, {"year": 1996, "wrestler": "Mankind", "category": "Entertainer", "overall": 91}, {"year": 1996, "wrestler": "Sycho Sid", "category": "Powerhouse", "overall": 90}, {"year": 1996, "wrestler": "British Bulldog", "category": "Specialist", "overall": 89}, {"year": 1996, "wrestler": "Goldust", "category": "Entertainer", "overall": 88}, {"year": 1997, "wrestler": "Steve Austin", "category": "Main Eventer", "overall": 98}, {"year": 1997, "wrestler": "Bret Hart", "category": "Main Eventer", "overall": 97}, {"year": 1997, "wrestler": "Shawn Michaels", "category": "Main Eventer", "overall": 96}, {"year": 1997, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 95}, {"year": 1997, "wrestler": "Owen Hart", "category": "Specialist", "overall": 94}, {"year": 1997, "wrestler": "Vader", "category": "Powerhouse", "overall": 93}, {"year": 1997, "wrestler": "Mankind", "category": "Entertainer", "overall": 92}, {"year": 1997, "wrestler": "Triple H", "category": "Specialist", "overall": 91}, {"year": 1997, "wrestler": "Goldust", "category": "Entertainer", "overall": 90}, {"year": 1997, "wrestler": "Ken Shamrock", "category": "Specialist", "overall": 89}, {"year": 1998, "wrestler": "Steve Austin", "category": "Main Eventer", "overall": 99}, {"year": 1998, "wrestler": "The Rock", "category": "Entertainer", "overall": 97}, {"year": 1998, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 96}, {"year": 1998, "wrestler": "Kane", "category": "Powerhouse", "overall": 95}, {"year": 1998, "wrestler": "Mankind", "category": "Entertainer", "overall": 94}, {"year": 1998, "wrestler": "Triple H", "category": "Specialist", "overall": 93}, {"year": 1998, "wrestler": "Ken Shamrock", "category": "Specialist", "overall": 92}, {"year": 1998, "wrestler": "X-Pac", "category": "Specialist", "overall": 91}, {"year": 1998, "wrestler": "Big Boss Man", "category": "Powerhouse", "overall": 90}, {"year": 1998, "wrestler": "Val Venis", "category": "Entertainer", "overall": 89}, {"year": 1999, "wrestler": "Steve Austin", "category": "Main Eventer", "overall": 98}, {"year": 1999, "wrestler": "The Rock", "category": "Main Eventer", "overall": 98}, {"year": 1999, "wrestler": "Triple H", "category": "Main Eventer", "overall": 96}, {"year": 1999, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 95}, {"year": 1999, "wrestler": "Kane", "category": "Powerhouse", "overall": 94}, {"year": 1999, "wrestler": "Mankind", "category": "Entertainer", "overall": 93}, {"year": 1999, "wrestler": "Big Show", "category": "Powerhouse", "overall": 92}, {"year": 1999, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 91}, {"year": 1999, "wrestler": "X-Pac", "category": "Specialist", "overall": 90}, {"year": 1999, "wrestler": "Road Dogg", "category": "Entertainer", "overall": 89}, {"year": 2000, "wrestler": "The Rock", "category": "Main Eventer", "overall": 99}, {"year": 2000, "wrestler": "Triple H", "category": "Main Eventer", "overall": 97}, {"year": 2000, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 96}, {"year": 2000, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 95}, {"year": 2000, "wrestler": "Kane", "category": "Powerhouse", "overall": 94}, {"year": 2000, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 93}, {"year": 2000, "wrestler": "Chris Benoit", "category": "Specialist", "overall": 92}, {"year": 2000, "wrestler": "Eddie Guerrero", "category": "Specialist", "overall": 91}, {"year": 2000, "wrestler": "Rikishi", "category": "Powerhouse", "overall": 90}, {"year": 2000, "wrestler": "Steve Austin", "category": "Main Eventer", "overall": 88}, {"year": 2001, "wrestler": "Steve Austin", "category": "Main Eventer", "overall": 99}, {"year": 2001, "wrestler": "The Rock", "category": "Main Eventer", "overall": 98}, {"year": 2001, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 97}, {"year": 2001, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 96}, {"year": 2001, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 95}, {"year": 2001, "wrestler": "Kane", "category": "Powerhouse", "overall": 94}, {"year": 2001, "wrestler": "Triple H", "category": "Main Eventer", "overall": 93}, {"year": 2001, "wrestler": "Rob Van Dam", "category": "Specialist", "overall": 92}, {"year": 2001, "wrestler": "Booker T", "category": "Entertainer", "overall": 91}, {"year": 2001, "wrestler": "The Big Show", "category": "Powerhouse", "overall": 90}, {"year": 2002, "wrestler": "Triple H", "category": "Main Eventer", "overall": 97}, {"year": 2002, "wrestler": "The Undertaker", "category": "Main Eventer", "overall": 96}, {"year": 2002, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 95}, {"year": 2002, "wrestler": "Brock Lesnar", "category": "Main Eventer", "overall": 94}, {"year": 2002, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 94}, {"year": 2002, "wrestler": "The Rock", "category": "Main Eventer", "overall": 93}, {"year": 2002, "wrestler": "Rob Van Dam", "category": "Specialist", "overall": 92}, {"year": 2002, "wrestler": "Kane", "category": "Powerhouse", "overall": 91}, {"year": 2002, "wrestler": "Eddie Guerrero", "category": "Specialist", "overall": 90}, {"year": 2002, "wrestler": "Chris Benoit", "category": "Specialist", "overall": 89}, {"year": 2003, "wrestler": "Brock Lesnar", "category": "Main Eventer", "overall": 97}, {"year": 2003, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 96}, {"year": 2003, "wrestler": "Triple H", "category": "Main Eventer", "overall": 95}, {"year": 2003, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 94}, {"year": 2003, "wrestler": "Eddie Guerrero", "category": "Specialist", "overall": 93}, {"year": 2003, "wrestler": "Chris Benoit", "category": "Specialist", "overall": 92}, {"year": 2003, "wrestler": "Kane", "category": "Powerhouse", "overall": 91}, {"year": 2003, "wrestler": "John Cena", "category": "Entertainer", "overall": 89}, {"year": 2003, "wrestler": "Big Show", "category": "Powerhouse", "overall": 89}, {"year": 2003, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 88}, {"year": 2004, "wrestler": "Triple H", "category": "Main Eventer", "overall": 97}, {"year": 2004, "wrestler": "Chris Benoit", "category": "Specialist", "overall": 96}, {"year": 2004, "wrestler": "Eddie Guerrero", "category": "Specialist", "overall": 95}, {"year": 2004, "wrestler": "JBL", "category": "Main Eventer", "overall": 94}, {"year": 2004, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 93}, {"year": 2004, "wrestler": "Batista", "category": "Powerhouse", "overall": 92}, {"year": 2004, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 91}, {"year": 2004, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 90}, {"year": 2004, "wrestler": "John Cena", "category": "Entertainer", "overall": 90}, {"year": 2004, "wrestler": "Big Show", "category": "Powerhouse", "overall": 88}, {"year": 2005, "wrestler": "Batista", "category": "Main Eventer", "overall": 98}, {"year": 2005, "wrestler": "John Cena", "category": "Main Eventer", "overall": 97}, {"year": 2005, "wrestler": "Triple H", "category": "Main Eventer", "overall": 96}, {"year": 2005, "wrestler": "Eddie Guerrero", "category": "Specialist", "overall": 95}, {"year": 2005, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 94}, {"year": 2005, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 93}, {"year": 2005, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 92}, {"year": 2005, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 91}, {"year": 2005, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 90}, {"year": 2005, "wrestler": "JBL", "category": "Entertainer", "overall": 89}, {"year": 2006, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2006, "wrestler": "Batista", "category": "Main Eventer", "overall": 97}, {"year": 2006, "wrestler": "Edge", "category": "Entertainer", "overall": 96}, {"year": 2006, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 95}, {"year": 2006, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 94}, {"year": 2006, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 93}, {"year": 2006, "wrestler": "Kurt Angle", "category": "Specialist", "overall": 92}, {"year": 2006, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 91}, {"year": 2006, "wrestler": "Booker T", "category": "Entertainer", "overall": 90}, {"year": 2006, "wrestler": "Kane", "category": "Powerhouse", "overall": 89}, {"year": 2007, "wrestler": "John Cena", "category": "Main Eventer", "overall": 99}, {"year": 2007, "wrestler": "Batista", "category": "Main Eventer", "overall": 97}, {"year": 2007, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 96}, {"year": 2007, "wrestler": "Edge", "category": "Entertainer", "overall": 95}, {"year": 2007, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 94}, {"year": 2007, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 93}, {"year": 2007, "wrestler": "Jeff Hardy", "category": "Entertainer", "overall": 92}, {"year": 2007, "wrestler": "Triple H", "category": "Main Eventer", "overall": 91}, {"year": 2007, "wrestler": "Kane", "category": "Powerhouse", "overall": 90}, {"year": 2007, "wrestler": "CM Punk", "category": "Specialist", "overall": 89}, {"year": 2008, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2008, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 97}, {"year": 2008, "wrestler": "Edge", "category": "Main Eventer", "overall": 96}, {"year": 2008, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 95}, {"year": 2008, "wrestler": "Triple H", "category": "Main Eventer", "overall": 94}, {"year": 2008, "wrestler": "Jeff Hardy", "category": "Entertainer", "overall": 93}, {"year": 2008, "wrestler": "Shawn Michaels", "category": "Specialist", "overall": 92}, {"year": 2008, "wrestler": "Batista", "category": "Main Eventer", "overall": 91}, {"year": 2008, "wrestler": "CM Punk", "category": "Specialist", "overall": 90}, {"year": 2008, "wrestler": "Kane", "category": "Powerhouse", "overall": 89}, {"year": 2009, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2009, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 97}, {"year": 2009, "wrestler": "Undertaker", "category": "Main Eventer", "overall": 96}, {"year": 2009, "wrestler": "Jeff Hardy", "category": "Entertainer", "overall": 95}, {"year": 2009, "wrestler": "CM Punk", "category": "Specialist", "overall": 94}, {"year": 2009, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 93}, {"year": 2009, "wrestler": "Edge", "category": "Main Eventer", "overall": 92}, {"year": 2009, "wrestler": "Triple H", "category": "Main Eventer", "overall": 91}, {"year": 2009, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 90}, {"year": 2009, "wrestler": "Batista", "category": "Powerhouse", "overall": 89}, {"year": 2010, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2010, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 97}, {"year": 2010, "wrestler": "Edge", "category": "Main Eventer", "overall": 96}, {"year": 2010, "wrestler": "Kane", "category": "Main Eventer", "overall": 95}, {"year": 2010, "wrestler": "Undertaker", "category": "Powerhouse", "overall": 94}, {"year": 2010, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 93}, {"year": 2010, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 92}, {"year": 2010, "wrestler": "The Miz", "category": "Entertainer", "overall": 91}, {"year": 2010, "wrestler": "Sheamus", "category": "Powerhouse", "overall": 90}, {"year": 2010, "wrestler": "CM Punk", "category": "Specialist", "overall": 89}, {"year": 2011, "wrestler": "CM Punk", "category": "Main Eventer", "overall": 99}, {"year": 2011, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2011, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 96}, {"year": 2011, "wrestler": "Mark Henry", "category": "Powerhouse", "overall": 95}, {"year": 2011, "wrestler": "Alberto Del Rio", "category": "Main Eventer", "overall": 94}, {"year": 2011, "wrestler": "Christian", "category": "Entertainer", "overall": 93}, {"year": 2011, "wrestler": "Sheamus", "category": "Powerhouse", "overall": 92}, {"year": 2011, "wrestler": "The Miz", "category": "Entertainer", "overall": 91}, {"year": 2011, "wrestler": "Rey Mysterio", "category": "Specialist", "overall": 90}, {"year": 2011, "wrestler": "Wade Barrett", "category": "Entertainer", "overall": 89}, {"year": 2012, "wrestler": "CM Punk", "category": "Main Eventer", "overall": 98}, {"year": 2012, "wrestler": "John Cena", "category": "Main Eventer", "overall": 97}, {"year": 2012, "wrestler": "Sheamus", "category": "Main Eventer", "overall": 96}, {"year": 2012, "wrestler": "Ryback", "category": "Powerhouse", "overall": 95}, {"year": 2012, "wrestler": "Dolph Ziggler", "category": "Specialist", "overall": 94}, {"year": 2012, "wrestler": "Daniel Bryan", "category": "Specialist", "overall": 93}, {"year": 2012, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 92}, {"year": 2012, "wrestler": "Big Show", "category": "Powerhouse", "overall": 91}, {"year": 2012, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 90}, {"year": 2012, "wrestler": "The Miz", "category": "Entertainer", "overall": 89}, {"year": 2013, "wrestler": "Daniel Bryan", "category": "Main Eventer", "overall": 97}, {"year": 2013, "wrestler": "John Cena", "category": "Main Eventer", "overall": 97}, {"year": 2013, "wrestler": "CM Punk", "category": "Main Eventer", "overall": 96}, {"year": 2013, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 95}, {"year": 2013, "wrestler": "Brock Lesnar", "category": "Powerhouse", "overall": 94}, {"year": 2013, "wrestler": "Roman Reigns", "category": "Powerhouse", "overall": 93}, {"year": 2013, "wrestler": "Dolph Ziggler", "category": "Specialist", "overall": 92}, {"year": 2013, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 91}, {"year": 2013, "wrestler": "Big Show", "category": "Powerhouse", "overall": 90}, {"year": 2013, "wrestler": "Mark Henry", "category": "Powerhouse", "overall": 89}, {"year": 2014, "wrestler": "Daniel Bryan", "category": "Main Eventer", "overall": 98}, {"year": 2014, "wrestler": "Brock Lesnar", "category": "Main Eventer", "overall": 97}, {"year": 2014, "wrestler": "John Cena", "category": "Main Eventer", "overall": 96}, {"year": 2014, "wrestler": "Seth Rollins", "category": "Specialist", "overall": 95}, {"year": 2014, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 94}, {"year": 2014, "wrestler": "Roman Reigns", "category": "Powerhouse", "overall": 93}, {"year": 2014, "wrestler": "Dean Ambrose", "category": "Entertainer", "overall": 92}, {"year": 2014, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 91}, {"year": 2014, "wrestler": "Dolph Ziggler", "category": "Specialist", "overall": 90}, {"year": 2014, "wrestler": "Cesaro", "category": "Specialist", "overall": 89}, {"year": 2015, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 98}, {"year": 2015, "wrestler": "Brock Lesnar", "category": "Main Eventer", "overall": 97}, {"year": 2015, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 96}, {"year": 2015, "wrestler": "John Cena", "category": "Main Eventer", "overall": 95}, {"year": 2015, "wrestler": "Kevin Owens", "category": "Specialist", "overall": 94}, {"year": 2015, "wrestler": "Dean Ambrose", "category": "Entertainer", "overall": 93}, {"year": 2015, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 92}, {"year": 2015, "wrestler": "Cesaro", "category": "Specialist", "overall": 91}, {"year": 2015, "wrestler": "Dolph Ziggler", "category": "Specialist", "overall": 90}, {"year": 2015, "wrestler": "Ryback", "category": "Powerhouse", "overall": 89}, {"year": 2016, "wrestler": "AJ Styles", "category": "Main Eventer", "overall": 99}, {"year": 2016, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 97}, {"year": 2016, "wrestler": "Kevin Owens", "category": "Main Eventer", "overall": 96}, {"year": 2016, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 95}, {"year": 2016, "wrestler": "Dean Ambrose", "category": "Main Eventer", "overall": 94}, {"year": 2016, "wrestler": "Chris Jericho", "category": "Entertainer", "overall": 93}, {"year": 2016, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 92}, {"year": 2016, "wrestler": "Cesaro", "category": "Specialist", "overall": 91}, {"year": 2016, "wrestler": "Sami Zayn", "category": "Specialist", "overall": 90}, {"year": 2016, "wrestler": "Braun Strowman", "category": "Powerhouse", "overall": 89}, {"year": 2017, "wrestler": "AJ Styles", "category": "Main Eventer", "overall": 98}, {"year": 2017, "wrestler": "Brock Lesnar", "category": "Main Eventer", "overall": 97}, {"year": 2017, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 96}, {"year": 2017, "wrestler": "Braun Strowman", "category": "Powerhouse", "overall": 95}, {"year": 2017, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 94}, {"year": 2017, "wrestler": "Samoa Joe", "category": "Specialist", "overall": 93}, {"year": 2017, "wrestler": "The Miz", "category": "Entertainer", "overall": 92}, {"year": 2017, "wrestler": "Kevin Owens", "category": "Entertainer", "overall": 91}, {"year": 2017, "wrestler": "Finn Balor", "category": "Specialist", "overall": 90}, {"year": 2017, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 89}, {"year": 2018, "wrestler": "Daniel Bryan", "category": "Main Eventer", "overall": 98}, {"year": 2018, "wrestler": "AJ Styles", "category": "Main Eventer", "overall": 97}, {"year": 2018, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 96}, {"year": 2018, "wrestler": "Braun Strowman", "category": "Powerhouse", "overall": 95}, {"year": 2018, "wrestler": "The Miz", "category": "Entertainer", "overall": 94}, {"year": 2018, "wrestler": "Samoa Joe", "category": "Specialist", "overall": 93}, {"year": 2018, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 92}, {"year": 2018, "wrestler": "Jeff Hardy", "category": "Entertainer", "overall": 91}, {"year": 2018, "wrestler": "Shinsuke Nakamura", "category": "Specialist", "overall": 90}, {"year": 2018, "wrestler": "Dolph Ziggler", "category": "Specialist", "overall": 89}, {"year": 2019, "wrestler": "Kofi Kingston", "category": "Main Eventer", "overall": 98}, {"year": 2019, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 97}, {"year": 2019, "wrestler": "Daniel Bryan", "category": "Main Eventer", "overall": 96}, {"year": 2019, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 95}, {"year": 2019, "wrestler": "Brock Lesnar", "category": "Powerhouse", "overall": 94}, {"year": 2019, "wrestler": "AJ Styles", "category": "Specialist", "overall": 93}, {"year": 2019, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 92}, {"year": 2019, "wrestler": "Kevin Owens", "category": "Entertainer", "overall": 91}, {"year": 2019, "wrestler": "Ricochet", "category": "Specialist", "overall": 90}, {"year": 2019, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 89}, {"year": 2020, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 99}, {"year": 2020, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 97}, {"year": 2020, "wrestler": "Randy Orton", "category": "Main Eventer", "overall": 96}, {"year": 2020, "wrestler": "Bray Wyatt", "category": "Entertainer", "overall": 95}, {"year": 2020, "wrestler": "AJ Styles", "category": "Specialist", "overall": 94}, {"year": 2020, "wrestler": "Kevin Owens", "category": "Entertainer", "overall": 93}, {"year": 2020, "wrestler": "Braun Strowman", "category": "Powerhouse", "overall": 92}, {"year": 2020, "wrestler": "Keith Lee", "category": "Powerhouse", "overall": 91}, {"year": 2020, "wrestler": "Seth Rollins", "category": "Entertainer", "overall": 90}, {"year": 2020, "wrestler": "Daniel Bryan", "category": "Specialist", "overall": 89}, {"year": 2021, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 99}, {"year": 2021, "wrestler": "Bobby Lashley", "category": "Powerhouse", "overall": 97}, {"year": 2021, "wrestler": "Big E", "category": "Main Eventer", "overall": 96}, {"year": 2021, "wrestler": "Seth Rollins", "category": "Entertainer", "overall": 95}, {"year": 2021, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 94}, {"year": 2021, "wrestler": "Edge", "category": "Entertainer", "overall": 93}, {"year": 2021, "wrestler": "Randy Orton", "category": "Entertainer", "overall": 92}, {"year": 2021, "wrestler": "AJ Styles", "category": "Specialist", "overall": 91}, {"year": 2021, "wrestler": "Damian Priest", "category": "Specialist", "overall": 90}, {"year": 2021, "wrestler": "Riddle", "category": "Specialist", "overall": 89}, {"year": 2022, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 99}, {"year": 2022, "wrestler": "Cody Rhodes", "category": "Main Eventer", "overall": 97}, {"year": 2022, "wrestler": "Seth Rollins", "category": "Entertainer", "overall": 96}, {"year": 2022, "wrestler": "Sami Zayn", "category": "Entertainer", "overall": 95}, {"year": 2022, "wrestler": "Gunther", "category": "Powerhouse", "overall": 94}, {"year": 2022, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 93}, {"year": 2022, "wrestler": "Kevin Owens", "category": "Entertainer", "overall": 92}, {"year": 2022, "wrestler": "Bobby Lashley", "category": "Powerhouse", "overall": 91}, {"year": 2022, "wrestler": "AJ Styles", "category": "Specialist", "overall": 90}, {"year": 2022, "wrestler": "Sheamus", "category": "Specialist", "overall": 89}, {"year": 2023, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 99}, {"year": 2023, "wrestler": "Cody Rhodes", "category": "Main Eventer", "overall": 98}, {"year": 2023, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 97}, {"year": 2023, "wrestler": "LA Knight", "category": "Entertainer", "overall": 96}, {"year": 2023, "wrestler": "Gunther", "category": "Powerhouse", "overall": 95}, {"year": 2023, "wrestler": "Sami Zayn", "category": "Entertainer", "overall": 94}, {"year": 2023, "wrestler": "Jey Uso", "category": "Entertainer", "overall": 93}, {"year": 2023, "wrestler": "Kevin Owens", "category": "Entertainer", "overall": 92}, {"year": 2023, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 91}, {"year": 2023, "wrestler": "AJ Styles", "category": "Specialist", "overall": 90}, {"year": 2024, "wrestler": "Cody Rhodes", "category": "Main Eventer", "overall": 99}, {"year": 2024, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 98}, {"year": 2024, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 97}, {"year": 2024, "wrestler": "Gunther", "category": "Powerhouse", "overall": 96}, {"year": 2024, "wrestler": "CM Punk", "category": "Entertainer", "overall": 95}, {"year": 2024, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 94}, {"year": 2024, "wrestler": "LA Knight", "category": "Entertainer", "overall": 93}, {"year": 2024, "wrestler": "Jey Uso", "category": "Entertainer", "overall": 92}, {"year": 2024, "wrestler": "Randy Orton", "category": "Entertainer", "overall": 91}, {"year": 2024, "wrestler": "AJ Styles", "category": "Specialist", "overall": 90}, {"year": 2025, "wrestler": "Cody Rhodes", "category": "Main Eventer", "overall": 99}, {"year": 2025, "wrestler": "John Cena", "category": "Main Eventer", "overall": 98}, {"year": 2025, "wrestler": "CM Punk", "category": "Entertainer", "overall": 97}, {"year": 2025, "wrestler": "Gunther", "category": "Main Eventer", "overall": 96}, {"year": 2025, "wrestler": "Seth Rollins", "category": "Main Eventer", "overall": 95}, {"year": 2025, "wrestler": "Roman Reigns", "category": "Main Eventer", "overall": 94}, {"year": 2025, "wrestler": "Jey Uso", "category": "Entertainer", "overall": 93}, {"year": 2025, "wrestler": "Randy Orton", "category": "Entertainer", "overall": 92}, {"year": 2025, "wrestler": "Drew McIntyre", "category": "Main Eventer", "overall": 91}, {"year": 2025, "wrestler": "AJ Styles", "category": "Specialist", "overall": 90}];
+const REQUIRED_SLOTS = ['Main Eventer','Powerhouse','Specialist','Entertainer'];
+const ALL_SLOTS = ['Main Eventer','Powerhouse','Specialist','Entertainer','Captain'];
+let game = null;
+
+function newState(){
+  return { team:{}, usedYears:[], usedWrestlers:[], currentYear:null, currentRoster:[], respinUsed:false, awaitingPick:false, lastResult:null };
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(id);
+  if(target) target.classList.add('active');
+  if(id === 'hof') renderLeaderboard();
+}
+
+function categoryClass(category){ return String(category).replace(/\s+/g,'-'); }
+function totalScore(){ return game ? Object.values(game.team).reduce((sum,p)=>sum+(p?.overall||0),0) : 0; }
+function filledCount(){ return game ? Object.keys(game.team).length : 0; }
+function uniq(arr){ return [...new Set(arr)]; }
+function allYears(){ return uniq(DATA.map(d=>d.year)).sort((a,b)=>a-b); }
+function remainingYears(){ return allYears().filter(y => !game.usedYears.includes(y)); }
+
+function openSlotsFor(w){
+  const slots = [];
+  if(REQUIRED_SLOTS.includes(w.category) && !game.team[w.category]) slots.push(w.category);
+  if(!game.team.Captain) slots.push('Captain');
+  return slots;
+}
+
+function validWrestlersForYear(year){
+  return DATA.filter(w => w.year === year && !game.usedWrestlers.includes(w.wrestler) && openSlotsFor(w).length > 0);
+}
+
+function validRemainingYears(excludeYear=null){
+  return remainingYears().filter(y => y !== excludeYear && validWrestlersForYear(y).length > 0);
+}
+
+function startGame(){
+  game = newState();
+  showScreen('game');
+  renderGame();
+}
+
+function setCurrentYear(year){
+  game.currentYear = year;
+  game.currentRoster = DATA.filter(w => w.year === year).sort((a,b)=>b.overall-a.overall || a.wrestler.localeCompare(b.wrestler));
+}
+
+function spinYear(){
+  if(!game) startGame();
+  if(game.awaitingPick) return;
+  const years = validRemainingYears();
+  if(!years.length){ alert('No valid years remain for your open slots.'); return; }
+  const y = years[Math.floor(Math.random()*years.length)];
+  setCurrentYear(y);
+  game.awaitingPick = true;
+  renderGame();
+}
+
+function respinYear(){
+  if(!game || game.respinUsed || !game.awaitingPick) return;
+  const years = validRemainingYears(game.currentYear);
+  if(!years.length){ alert('No other valid unused years remain.'); return; }
+  game.respinUsed = true;
+  const y = years[Math.floor(Math.random()*years.length)];
+  setCurrentYear(y);
+  renderGame();
+}
+
+function chooseSlot(w, slot){
+  if(!game || !game.awaitingPick) return;
+  if(game.team[slot]) return;
+  if(slot !== 'Captain' && w.category !== slot) return;
+  if(game.usedWrestlers.includes(w.wrestler)) return;
+  if(game.usedYears.includes(w.year)) return;
+
+  game.team[slot] = w;
+  game.usedYears.push(w.year);
+  game.usedWrestlers.push(w.wrestler);
+  game.currentYear = null;
+  game.currentRoster = [];
+  game.awaitingPick = false;
+
+  if(filledCount() >= 5) finishGame();
+  else renderGame();
+}
+
+function renderSlots(targetId='slots', team=(game?.team || {})){
+  const el = document.getElementById(targetId);
+  if(!el) return;
+  el.innerHTML = '';
+  ALL_SLOTS.forEach(slot => {
+    const p = team[slot];
+    const div = document.createElement('div');
+    div.className = `slot ${p ? 'filled '+categoryClass(p.category) : 'empty'}`;
+    div.innerHTML = `<div class="slot-title">${slot}</div>` +
+      (p ? `<div class="slot-name">${escapeHtml(p.wrestler)}</div><div class="slot-meta">${p.year} • ${escapeHtml(p.category)} • Impact: ${p.overall}</div>` : `<div class="slot-meta">Empty</div>`);
+    el.appendChild(div);
+  });
+}
+
+function renderGame(){
+  if(!game) game = newState();
+  renderSlots();
+  setText('turnPill', `${Math.min(filledCount()+1,5)}/5`);
+  setText('scorePill', totalScore());
+  setText('respinPill', game.respinUsed ? 'Used' : 'Available');
+  setText('currentYear', game.currentYear || '—');
+
+  const spinBtn = document.getElementById('spinBtn');
+  const respinBtn = document.getElementById('respinBtn');
+  if(spinBtn) spinBtn.disabled = game.awaitingPick;
+  if(respinBtn) respinBtn.disabled = !game.awaitingPick || game.respinUsed || validRemainingYears(game.currentYear).length === 0;
+
+  setText('yearHelp', game.awaitingPick ? 'Choose one wrestler from this year, or use your one re-spin if it is still available.' : 'Press Spin Year to begin your next turn.');
+  renderWrestlers();
+}
+
+function renderWrestlers(){
+  const list = document.getElementById('wrestlerList');
+  if(!list) return;
+  list.innerHTML = '';
+  if(!game.currentRoster.length){ list.innerHTML = '<p>No year spun yet.</p>'; return; }
+
+  game.currentRoster.forEach(w => {
+    const open = openSlotsFor(w);
+    const lockedW = game.usedWrestlers.includes(w.wrestler);
+    const lockedY = game.usedYears.includes(w.year);
+    const disabled = lockedW || lockedY || open.length === 0;
+
+    const card = document.createElement('div');
+    card.className = `wrestler-card ${categoryClass(w.category)} ${disabled ? 'disabled' : ''}`;
+    const badgeClass = `badge-${categoryClass(w.category)}`;
+    card.innerHTML = `
+      <div class="wrestler-year">${w.year}</div>
+      <div class="wrestler-name">${escapeHtml(w.wrestler)}</div>
+      <div class="wrestler-score"><small>Impact</small>${w.overall}</div>
+      <span class="cat-badge ${badgeClass}">${escapeHtml(w.category)}</span>
+      <div class="slot-buttons"></div>
+    `;
+
+    const slotButtons = card.querySelector('.slot-buttons');
+    if(disabled){
+      const reason = lockedW ? 'Wrestler already used' : lockedY ? 'Year already used' : 'No valid slot available';
+      slotButtons.style.display = 'block';
+      slotButtons.innerHTML = `<span class="lock-reason">${reason}</span>`;
+    } else {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.slot-buttons').forEach(p => p.style.display = 'none');
+        slotButtons.innerHTML = '<div class="slot-title">Place in:</div>';
+        open.forEach(slot => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = slot;
+          btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            chooseSlot(w, slot);
+          });
+          slotButtons.appendChild(btn);
+        });
+        slotButtons.style.display = 'block';
+      });
+    }
+    list.appendChild(card);
+  });
+}
+
+function recordFor(score){
+  if(score < 450) return '0-5';
+  if(score <= 459) return '1-4';
+  if(score <= 469) return '2-3';
+  if(score <= 479) return '3-2';
+  if(score <= 484) return '4-1';
+  return '5-0';
+}
+
+function finishGame(){
+  const score = totalScore();
+  game.lastResult = { score, record:recordFor(score), team:{...game.team}, date:new Date().toISOString() };
+  showScreen('results');
+  setText('resultBanner', game.lastResult.record);
+  setText('finalScore', score);
+  renderFinalTeam();
+  const qualifies = qualifiesForLeaderboard(score);
+  const qualifyBox = document.getElementById('qualifyBox');
+  const missBox = document.getElementById('missBox');
+  if(qualifyBox) qualifyBox.style.display = qualifies ? 'block' : 'none';
+  if(missBox) missBox.style.display = qualifies ? 'none' : 'block';
+  const nickname = document.getElementById('nickname');
+  if(nickname) nickname.value = '';
+}
+
+function renderFinalTeam(){
+  const el = document.getElementById('finalTeam');
+  if(!el || !game?.lastResult) return;
+  el.innerHTML = '';
+  ALL_SLOTS.forEach(slot => {
+    const p = game.lastResult.team[slot];
+    const div = document.createElement('div');
+    div.className = `slot filled ${categoryClass(p.category)}`;
+    div.innerHTML = `<div class="slot-title">${slot}</div><div class="slot-name">${escapeHtml(p.wrestler)}</div><div class="slot-meta">${p.year} • ${escapeHtml(p.category)} • Impact: ${p.overall}</div>`;
+    el.appendChild(div);
+  });
+}
+
+function getBoard(){
+  try { return JSON.parse(localStorage.getItem('ussHallOfFame') || '[]'); }
+  catch { return []; }
+}
+function setBoard(board){ localStorage.setItem('ussHallOfFame', JSON.stringify(board)); }
+function qualifiesForLeaderboard(score){
+  const b = getBoard().sort((a,b)=>b.score-a.score || new Date(a.date)-new Date(b.date));
+  return b.length < 10 || score >= b[b.length-1].score;
+}
+function saveScore(){
+  if(!game?.lastResult) return;
+  const input = document.getElementById('nickname');
+  const nickname = ((input?.value || '').trim() || 'Anonymous').slice(0,24);
+  const entry = { nickname, score:game.lastResult.score, record:game.lastResult.record, team:game.lastResult.team, date:game.lastResult.date };
+  const board = getBoard();
+  board.push(entry);
+  board.sort((a,b)=>b.score-a.score || new Date(a.date)-new Date(b.date));
+  setBoard(board.slice(0,10));
+  showScreen('hof');
+}
+function renderLeaderboard(){
+  const el = document.getElementById('leaderboard');
+  if(!el) return;
+  const board = getBoard().sort((a,b)=>b.score-a.score || new Date(a.date)-new Date(b.date));
+  if(!board.length){ el.innerHTML = '<p>No teams saved yet. Build a Top 10 team to enter the Hall of Fame.</p>'; return; }
+  el.innerHTML = board.map((entry,index) => {
+    const teamLines = ALL_SLOTS.map(slot => {
+      const p = entry.team[slot];
+      return `${slot}: ${p.year} ${escapeHtml(p.wrestler)} (Impact: ${p.overall})`;
+    }).join('<br>');
+    return `<div class="leaderboard-entry"><div style="font-size:1.4rem;font-weight:1000;color:var(--gold)">#${index+1}</div><div><strong>${escapeHtml(entry.nickname)}</strong><div class="team-small">${teamLines}</div></div><div style="font-weight:1000;font-size:1.25rem">${entry.score}</div></div>`;
+  }).join('');
+}
+function clearLeaderboard(){
+  if(confirm('Clear the Hall of Fame on this browser?')){
+    localStorage.removeItem('ussHallOfFame');
+    renderLeaderboard();
+  }
+}
+
+function copyResult(){
+  if(!game?.lastResult) return;
+  const lines = ['Ultimate Survivor Series Team', `Result: ${game.lastResult.record}`, `Score: ${game.lastResult.score}`, ...ALL_SLOTS.map(slot => {
+    const p = game.lastResult.team[slot];
+    return `${slot}: ${p.year} ${p.wrestler} (Impact: ${p.overall})`;
+  })];
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(lines.join('\n')).then(()=>alert('Result copied.')).catch(()=>fallbackCopy(lines.join('\n')));
+  } else fallbackCopy(lines.join('\n'));
+}
+function fallbackCopy(text){
+  const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); alert('Result copied.');
+}
+function openInfo(){ document.getElementById('infoModal')?.classList.add('active'); }
+function closeInfo(){ document.getElementById('infoModal')?.classList.remove('active'); }
+function setText(id, value){ const el=document.getElementById(id); if(el) el.textContent = value; }
+function escapeHtml(str){ return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+function bind(id, event, handler){ const el=document.getElementById(id); if(el) el.addEventListener(event, handler); else console.warn('Missing element:', id); }
+
+window.addEventListener('DOMContentLoaded', () => {
+  bind('homeInstructionsBtn','click',()=>showScreen('instructions'));
+  bind('homeStartBtn','click',startGame);
+  bind('homeHofBtn','click',()=>showScreen('hof'));
+  bind('instructionsStartBtn','click',startGame);
+  bind('instructionsHomeBtn','click',()=>showScreen('home'));
+  bind('gameInfoBtn','click',openInfo);
+  bind('gameHofBtn','click',()=>showScreen('hof'));
+  bind('gameRestartBtn','click',startGame);
+  bind('spinBtn','click',spinYear);
+  bind('respinBtn','click',respinYear);
+  bind('saveScoreBtn','click',saveScore);
+  bind('resultsPlayAgainBtn','click',startGame);
+  bind('resultsHofBtn','click',()=>showScreen('hof'));
+  bind('copyResultBtn','click',copyResult);
+  bind('hofStartBtn','click',startGame);
+  bind('hofHomeBtn','click',()=>showScreen('home'));
+  bind('clearHofBtn','click',clearLeaderboard);
+  bind('closeInfoBtn','click',closeInfo);
+  const modal = document.getElementById('infoModal');
+  if(modal) modal.addEventListener('click', (e)=>{ if(e.target === modal) closeInfo(); });
+  renderLeaderboard();
+});
+</script>
+</body>
+</html>
