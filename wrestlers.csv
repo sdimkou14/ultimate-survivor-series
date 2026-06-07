@@ -1,411 +1,411 @@
-Year,Wrestler,Category,Impact
-1985,Hulk Hogan,Main Eventer,99
-1985,Roddy Piper,Entertainer,95
-1985,Andre the Giant,Powerhouse,94
-1985,Paul Orndorff,Main Eventer,92
-1985,Junkyard Dog,Entertainer,91
-1985,Randy Savage,Specialist,90
-1985,Tito Santana,Specialist,89
-1985,Don Muraco,Powerhouse,87
-1985,Iron Sheik,Powerhouse,86
-1985,Nikolai Volkoff,Powerhouse,85
-1986,Hulk Hogan,Main Eventer,99
-1986,Randy Savage,Specialist,94
-1986,Paul Orndorff,Main Eventer,93
-1986,Andre the Giant,Powerhouse,92
-1986,Jake Roberts,Entertainer,91
-1986,Roddy Piper,Entertainer,90
-1986,Junkyard Dog,Entertainer,89
-1986,King Kong Bundy,Powerhouse,88
-1986,Tito Santana,Specialist,87
-1986,Nikolai Volkoff,Powerhouse,86
-1987,Hulk Hogan,Main Eventer,99
-1987,Randy Savage,Specialist,96
-1987,Andre the Giant,Powerhouse,95
-1987,Honky Tonk Man,Entertainer,92
-1987,Jake Roberts,Entertainer,91
-1987,Ted DiBiase,Main Eventer,90
-1987,Roddy Piper,Entertainer,89
-1987,King Kong Bundy,Powerhouse,88
-1987,Rick Rude,Specialist,87
-1987,Ultimate Warrior,Powerhouse,86
-1988,Hulk Hogan,Main Eventer,98
-1988,Randy Savage,Main Eventer,97
-1988,Ted DiBiase,Main Eventer,94
-1988,Andre the Giant,Powerhouse,92
-1988,Ultimate Warrior,Powerhouse,91
-1988,Rick Rude,Specialist,90
-1988,Jake Roberts,Specialist,90
-1988,Honky Tonk Man,Entertainer,89
-1988,Big Boss Man,Powerhouse,88
-1988,Brutus Beefcake,Entertainer,87
-1989,Hulk Hogan,Main Eventer,98
-1989,Randy Savage,Main Eventer,97
-1989,Ultimate Warrior,Powerhouse,94
-1989,Ted DiBiase,Main Eventer,93
-1989,Rick Rude,Specialist,92
-1989,Andre the Giant,Powerhouse,90
-1989,Big Boss Man,Powerhouse,90
-1989,Mr Perfect,Specialist,89
-1989,Jake Roberts,Entertainer,89
-1989,Roddy Piper,Entertainer,88
-1990,Ultimate Warrior,Main Eventer,98
-1990,Hulk Hogan,Main Eventer,97
-1990,Randy Savage,Main Eventer,95
-1990,Ted DiBiase,Main Eventer,94
-1990,Mr Perfect,Specialist,93
-1990,Rick Rude,Specialist,92
-1990,Earthquake,Powerhouse,91
-1990,Jake Roberts,Entertainer,91
-1990,Big Boss Man,Powerhouse,89
-1990,Dusty Rhodes,Entertainer,88
-1991,Hulk Hogan,Main Eventer,98
-1991,Ultimate Warrior,Main Eventer,97
-1991,Randy Savage,Entertainer,96
-1991,Undertaker,Powerhouse,95
-1991,Ric Flair,Main Eventer,94
-1991,Jake Roberts,Entertainer,93
-1991,Mr Perfect,Specialist,92
-1991,Ted DiBiase,Main Eventer,91
-1991,Bret Hart,Specialist,90
-1991,Earthquake,Powerhouse,89
-1992,Bret Hart,Main Eventer,96
-1992,Ric Flair,Main Eventer,95
-1992,Randy Savage,Main Eventer,94
-1992,Shawn Michaels,Specialist,93
-1992,Ultimate Warrior,Powerhouse,92
-1992,Undertaker,Powerhouse,91
-1992,Mr Perfect,Specialist,90
-1992,British Bulldog,Specialist,89
-1992,Razor Ramon,Entertainer,88
-1992,Papa Shango,Entertainer,87
-1993,Bret Hart,Main Eventer,95
-1993,Yokozuna,Powerhouse,94
-1993,Undertaker,Powerhouse,93
-1993,Shawn Michaels,Specialist,92
-1993,Razor Ramon,Entertainer,91
-1993,Lex Luger,Main Eventer,90
-1993,Mr Perfect,Specialist,89
-1993,Doink,Entertainer,88
-1993,Crush,Powerhouse,87
-1993,Bam Bam Bigelow,Powerhouse,86
-1994,Bret Hart,Main Eventer,96
-1994,Undertaker,Powerhouse,95
-1994,Shawn Michaels,Specialist,94
-1994,Razor Ramon,Entertainer,93
-1994,Diesel,Powerhouse,92
-1994,Owen Hart,Specialist,91
-1994,Yokozuna,Powerhouse,90
-1994,Lex Luger,Main Eventer,89
-1994,Jeff Jarrett,Entertainer,88
-1994,Bam Bam Bigelow,Powerhouse,87
-1995,Diesel,Main Eventer,93
-1995,Bret Hart,Main Eventer,92
-1995,Shawn Michaels,Specialist,91
-1995,Undertaker,Powerhouse,90
-1995,Razor Ramon,Entertainer,89
-1995,Owen Hart,Specialist,88
-1995,Yokozuna,Powerhouse,87
-1995,British Bulldog,Specialist,86
-1995,Jeff Jarrett,Entertainer,85
-1995,Bam Bam Bigelow,Powerhouse,84
-1996,Shawn Michaels,Main Eventer,97
-1996,Bret Hart,Main Eventer,96
-1996,Undertaker,Powerhouse,95
-1996,Steve Austin,Specialist,94
-1996,Vader,Powerhouse,93
-1996,Owen Hart,Specialist,92
-1996,Mankind,Entertainer,91
-1996,Sycho Sid,Powerhouse,90
-1996,British Bulldog,Specialist,89
-1996,Goldust,Entertainer,88
-1997,Steve Austin,Main Eventer,98
-1997,Bret Hart,Main Eventer,97
-1997,Shawn Michaels,Main Eventer,96
-1997,Undertaker,Main Eventer,95
-1997,Owen Hart,Specialist,94
-1997,Vader,Powerhouse,93
-1997,Mankind,Entertainer,92
-1997,Triple H,Specialist,91
-1997,Goldust,Entertainer,90
-1997,Ken Shamrock,Specialist,89
-1998,Steve Austin,Main Eventer,99
-1998,The Rock,Entertainer,97
-1998,Undertaker,Main Eventer,96
-1998,Kane,Powerhouse,95
-1998,Mankind,Entertainer,94
-1998,Triple H,Specialist,93
-1998,Ken Shamrock,Specialist,92
-1998,X-Pac,Specialist,91
-1998,Big Boss Man,Powerhouse,90
-1998,Val Venis,Entertainer,89
-1999,Steve Austin,Main Eventer,98
-1999,The Rock,Main Eventer,98
-1999,Triple H,Main Eventer,96
-1999,Undertaker,Powerhouse,95
-1999,Kane,Powerhouse,94
-1999,Mankind,Entertainer,93
-1999,Big Show,Powerhouse,92
-1999,Chris Jericho,Entertainer,91
-1999,X-Pac,Specialist,90
-1999,Road Dogg,Entertainer,89
-2000,The Rock,Main Eventer,99
-2000,Triple H,Main Eventer,97
-2000,Kurt Angle,Specialist,96
-2000,Undertaker,Powerhouse,95
-2000,Kane,Powerhouse,94
-2000,Chris Jericho,Entertainer,93
-2000,Chris Benoit,Specialist,92
-2000,Eddie Guerrero,Specialist,91
-2000,Rikishi,Powerhouse,90
-2000,Steve Austin,Main Eventer,88
-2001,Steve Austin,Main Eventer,99
-2001,The Rock,Main Eventer,98
-2001,Kurt Angle,Specialist,97
-2001,Undertaker,Powerhouse,96
-2001,Chris Jericho,Entertainer,95
-2001,Kane,Powerhouse,94
-2001,Triple H,Main Eventer,93
-2001,Rob Van Dam,Specialist,92
-2001,Booker T,Entertainer,91
-2001,The Big Show,Powerhouse,90
-2002,Triple H,Main Eventer,97
-2002,The Undertaker,Main Eventer,96
-2002,Kurt Angle,Specialist,95
-2002,Brock Lesnar,Main Eventer,94
-2002,Chris Jericho,Entertainer,94
-2002,The Rock,Main Eventer,93
-2002,Rob Van Dam,Specialist,92
-2002,Kane,Powerhouse,91
-2002,Eddie Guerrero,Specialist,90
-2002,Chris Benoit,Specialist,89
-2003,Brock Lesnar,Main Eventer,97
-2003,Kurt Angle,Specialist,96
-2003,Triple H,Main Eventer,95
-2003,Undertaker,Main Eventer,94
-2003,Eddie Guerrero,Specialist,93
-2003,Chris Benoit,Specialist,92
-2003,Kane,Powerhouse,91
-2003,John Cena,Entertainer,89
-2003,Big Show,Powerhouse,89
-2003,Rey Mysterio,Specialist,88
-2004,Triple H,Main Eventer,97
-2004,Chris Benoit,Specialist,96
-2004,Eddie Guerrero,Specialist,95
-2004,JBL,Main Eventer,94
-2004,Randy Orton,Main Eventer,93
-2004,Batista,Powerhouse,92
-2004,Undertaker,Powerhouse,91
-2004,Kurt Angle,Specialist,90
-2004,John Cena,Entertainer,90
-2004,Big Show,Powerhouse,88
-2005,Batista,Main Eventer,98
-2005,John Cena,Main Eventer,97
-2005,Triple H,Main Eventer,96
-2005,Eddie Guerrero,Specialist,95
-2005,Shawn Michaels,Specialist,94
-2005,Kurt Angle,Specialist,93
-2005,Undertaker,Powerhouse,92
-2005,Randy Orton,Main Eventer,91
-2005,Rey Mysterio,Specialist,90
-2005,JBL,Entertainer,89
-2006,John Cena,Main Eventer,98
-2006,Batista,Main Eventer,97
-2006,Edge,Entertainer,96
-2006,Undertaker,Main Eventer,95
-2006,Shawn Michaels,Specialist,94
-2006,Randy Orton,Main Eventer,93
-2006,Kurt Angle,Specialist,92
-2006,Rey Mysterio,Specialist,91
-2006,Booker T,Entertainer,90
-2006,Kane,Powerhouse,89
-2007,John Cena,Main Eventer,99
-2007,Batista,Main Eventer,97
-2007,Undertaker,Main Eventer,96
-2007,Edge,Entertainer,95
-2007,Shawn Michaels,Specialist,94
-2007,Randy Orton,Main Eventer,93
-2007,Jeff Hardy,Entertainer,92
-2007,Triple H,Main Eventer,91
-2007,Kane,Powerhouse,90
-2007,CM Punk,Specialist,89
-2008,John Cena,Main Eventer,98
-2008,Chris Jericho,Entertainer,97
-2008,Edge,Main Eventer,96
-2008,Undertaker,Main Eventer,95
-2008,Triple H,Main Eventer,94
-2008,Jeff Hardy,Entertainer,93
-2008,Shawn Michaels,Specialist,92
-2008,Batista,Main Eventer,91
-2008,CM Punk,Specialist,90
-2008,Kane,Powerhouse,89
-2009,John Cena,Main Eventer,98
-2009,Randy Orton,Main Eventer,97
-2009,Undertaker,Main Eventer,96
-2009,Jeff Hardy,Entertainer,95
-2009,CM Punk,Specialist,94
-2009,Chris Jericho,Entertainer,93
-2009,Edge,Main Eventer,92
-2009,Triple H,Main Eventer,91
-2009,Rey Mysterio,Specialist,90
-2009,Batista,Powerhouse,89
-2010,John Cena,Main Eventer,98
-2010,Randy Orton,Main Eventer,97
-2010,Edge,Main Eventer,96
-2010,Kane,Main Eventer,95
-2010,Undertaker,Powerhouse,94
-2010,Rey Mysterio,Specialist,93
-2010,Chris Jericho,Entertainer,92
-2010,The Miz,Entertainer,91
-2010,Sheamus,Powerhouse,90
-2010,CM Punk,Specialist,89
-2011,CM Punk,Main Eventer,99
-2011,John Cena,Main Eventer,98
-2011,Randy Orton,Main Eventer,96
-2011,Mark Henry,Powerhouse,95
-2011,Alberto Del Rio,Main Eventer,94
-2011,Christian,Entertainer,93
-2011,Sheamus,Powerhouse,92
-2011,The Miz,Entertainer,91
-2011,Rey Mysterio,Specialist,90
-2011,Wade Barrett,Entertainer,89
-2012,CM Punk,Main Eventer,98
-2012,John Cena,Main Eventer,97
-2012,Sheamus,Main Eventer,96
-2012,Ryback,Powerhouse,95
-2012,Dolph Ziggler,Specialist,94
-2012,Daniel Bryan,Specialist,93
-2012,Randy Orton,Main Eventer,92
-2012,Big Show,Powerhouse,91
-2012,Chris Jericho,Entertainer,90
-2012,The Miz,Entertainer,89
-2013,Daniel Bryan,Main Eventer,97
-2013,John Cena,Main Eventer,97
-2013,CM Punk,Main Eventer,96
-2013,Randy Orton,Main Eventer,95
-2013,Brock Lesnar,Powerhouse,94
-2013,Roman Reigns,Powerhouse,93
-2013,Dolph Ziggler,Specialist,92
-2013,Bray Wyatt,Entertainer,91
-2013,Big Show,Powerhouse,90
-2013,Mark Henry,Powerhouse,89
-2014,Daniel Bryan,Main Eventer,98
-2014,Brock Lesnar,Main Eventer,97
-2014,John Cena,Main Eventer,96
-2014,Seth Rollins,Specialist,95
-2014,Randy Orton,Main Eventer,94
-2014,Roman Reigns,Powerhouse,93
-2014,Dean Ambrose,Entertainer,92
-2014,Bray Wyatt,Entertainer,91
-2014,Dolph Ziggler,Specialist,90
-2014,Cesaro,Specialist,89
-2015,Seth Rollins,Main Eventer,98
-2015,Brock Lesnar,Main Eventer,97
-2015,Roman Reigns,Main Eventer,96
-2015,John Cena,Main Eventer,95
-2015,Kevin Owens,Specialist,94
-2015,Dean Ambrose,Entertainer,93
-2015,Bray Wyatt,Entertainer,92
-2015,Cesaro,Specialist,91
-2015,Dolph Ziggler,Specialist,90
-2015,Ryback,Powerhouse,89
-2016,AJ Styles,Main Eventer,99
-2016,Roman Reigns,Main Eventer,97
-2016,Kevin Owens,Main Eventer,96
-2016,Seth Rollins,Main Eventer,95
-2016,Dean Ambrose,Main Eventer,94
-2016,Chris Jericho,Entertainer,93
-2016,Bray Wyatt,Entertainer,92
-2016,Cesaro,Specialist,91
-2016,Sami Zayn,Specialist,90
-2016,Braun Strowman,Powerhouse,89
-2017,AJ Styles,Main Eventer,98
-2017,Brock Lesnar,Main Eventer,97
-2017,Roman Reigns,Main Eventer,96
-2017,Braun Strowman,Powerhouse,95
-2017,Seth Rollins,Main Eventer,94
-2017,Samoa Joe,Specialist,93
-2017,The Miz,Entertainer,92
-2017,Kevin Owens,Entertainer,91
-2017,Finn Balor,Specialist,90
-2017,Bray Wyatt,Entertainer,89
-2018,Daniel Bryan,Main Eventer,98
-2018,AJ Styles,Main Eventer,97
-2018,Seth Rollins,Main Eventer,96
-2018,Braun Strowman,Powerhouse,95
-2018,The Miz,Entertainer,94
-2018,Samoa Joe,Specialist,93
-2018,Randy Orton,Main Eventer,92
-2018,Jeff Hardy,Entertainer,91
-2018,Shinsuke Nakamura,Specialist,90
-2018,Dolph Ziggler,Specialist,89
-2019,Kofi Kingston,Main Eventer,98
-2019,Seth Rollins,Main Eventer,97
-2019,Daniel Bryan,Main Eventer,96
-2019,Bray Wyatt,Entertainer,95
-2019,Brock Lesnar,Powerhouse,94
-2019,AJ Styles,Specialist,93
-2019,Roman Reigns,Main Eventer,92
-2019,Kevin Owens,Entertainer,91
-2019,Ricochet,Specialist,90
-2019,Randy Orton,Main Eventer,89
-2020,Roman Reigns,Main Eventer,99
-2020,Drew McIntyre,Main Eventer,97
-2020,Randy Orton,Main Eventer,96
-2020,Bray Wyatt,Entertainer,95
-2020,AJ Styles,Specialist,94
-2020,Kevin Owens,Entertainer,93
-2020,Braun Strowman,Powerhouse,92
-2020,Keith Lee,Powerhouse,91
-2020,Seth Rollins,Entertainer,90
-2020,Daniel Bryan,Specialist,89
-2021,Roman Reigns,Main Eventer,99
-2021,Bobby Lashley,Powerhouse,97
-2021,Big E,Main Eventer,96
-2021,Seth Rollins,Entertainer,95
-2021,Drew McIntyre,Main Eventer,94
-2021,Edge,Entertainer,93
-2021,Randy Orton,Entertainer,92
-2021,AJ Styles,Specialist,91
-2021,Damian Priest,Specialist,90
-2021,Riddle,Specialist,89
-2022,Roman Reigns,Main Eventer,99
-2022,Cody Rhodes,Main Eventer,97
-2022,Seth Rollins,Entertainer,96
-2022,Sami Zayn,Entertainer,95
-2022,Gunther,Powerhouse,94
-2022,Drew McIntyre,Main Eventer,93
-2022,Kevin Owens,Entertainer,92
-2022,Bobby Lashley,Powerhouse,91
-2022,AJ Styles,Specialist,90
-2022,Sheamus,Specialist,89
-2023,Roman Reigns,Main Eventer,99
-2023,Cody Rhodes,Main Eventer,98
-2023,Seth Rollins,Main Eventer,97
-2023,LA Knight,Entertainer,96
-2023,Gunther,Powerhouse,95
-2023,Sami Zayn,Entertainer,94
-2023,Jey Uso,Entertainer,93
-2023,Kevin Owens,Entertainer,92
-2023,Drew McIntyre,Main Eventer,91
-2023,AJ Styles,Specialist,90
-2024,Cody Rhodes,Main Eventer,99
-2024,Roman Reigns,Main Eventer,98
-2024,Seth Rollins,Main Eventer,97
-2024,Gunther,Powerhouse,96
-2024,CM Punk,Entertainer,95
-2024,Drew McIntyre,Main Eventer,94
-2024,LA Knight,Entertainer,93
-2024,Jey Uso,Entertainer,92
-2024,Randy Orton,Entertainer,91
-2024,AJ Styles,Specialist,90
-2025,Cody Rhodes,Main Eventer,99
-2025,John Cena,Main Eventer,98
-2025,CM Punk,Entertainer,97
-2025,Gunther,Main Eventer,96
-2025,Seth Rollins,Main Eventer,95
-2025,Roman Reigns,Main Eventer,94
-2025,Jey Uso,Entertainer,93
-2025,Randy Orton,Entertainer,92
-2025,Drew McIntyre,Main Eventer,91
-2025,AJ Styles,Specialist,90
+Year	Wrestler	Category	Impact
+1985	Hulk Hogan	Main Eventer	99
+1985	Roddy Piper	Entertainer	95
+1985	Andre the Giant	Powerhouse	94
+1985	Paul Orndorff	Main Eventer	92
+1985	Junkyard Dog	Entertainer	91
+1985	Randy Savage	Specialist	90
+1985	Tito Santana	Specialist	89
+1985	Don Muraco	Powerhouse	87
+1985	Iron Sheik	Powerhouse	86
+1985	Nikolai Volkoff	Powerhouse	85
+1986	Hulk Hogan	Main Eventer	99
+1986	Randy Savage	Specialist	94
+1986	Paul Orndorff	Main Eventer	93
+1986	Andre the Giant	Powerhouse	92
+1986	Jake Roberts	Entertainer	91
+1986	Roddy Piper	Entertainer	90
+1986	Junkyard Dog	Entertainer	89
+1986	King Kong Bundy	Powerhouse	88
+1986	Tito Santana	Specialist	87
+1986	Nikolai Volkoff	Powerhouse	86
+1987	Hulk Hogan	Main Eventer	99
+1987	Randy Savage	Specialist	96
+1987	Andre the Giant	Powerhouse	95
+1987	Honky Tonk Man	Entertainer	92
+1987	Jake Roberts	Entertainer	91
+1987	Ted DiBiase	Main Eventer	90
+1987	Roddy Piper	Entertainer	89
+1987	King Kong Bundy	Powerhouse	88
+1987	Rick Rude	Specialist	87
+1987	Ultimate Warrior	Powerhouse	86
+1988	Hulk Hogan	Main Eventer	98
+1988	Randy Savage	Main Eventer	97
+1988	Ted DiBiase	Main Eventer	94
+1988	Andre the Giant	Powerhouse	92
+1988	Ultimate Warrior	Powerhouse	91
+1988	Rick Rude	Specialist	90
+1988	Jake Roberts	Specialist	90
+1988	Honky Tonk Man	Entertainer	89
+1988	Big Boss Man	Powerhouse	88
+1988	Brutus Beefcake	Entertainer	87
+1989	Hulk Hogan	Main Eventer	98
+1989	Randy Savage	Main Eventer	97
+1989	Ultimate Warrior	Powerhouse	94
+1989	Ted DiBiase	Main Eventer	93
+1989	Rick Rude	Specialist	92
+1989	Andre the Giant	Powerhouse	90
+1989	Big Boss Man	Powerhouse	90
+1989	Mr Perfect	Specialist	89
+1989	Jake Roberts	Entertainer	89
+1989	Roddy Piper	Entertainer	88
+1990	Ultimate Warrior	Main Eventer	98
+1990	Hulk Hogan	Main Eventer	97
+1990	Randy Savage	Main Eventer	95
+1990	Ted DiBiase	Main Eventer	94
+1990	Mr Perfect	Specialist	93
+1990	Rick Rude	Specialist	92
+1990	Earthquake	Powerhouse	91
+1990	Jake Roberts	Entertainer	91
+1990	Big Boss Man	Powerhouse	89
+1990	Dusty Rhodes	Entertainer	88
+1991	Hulk Hogan	Main Eventer	98
+1991	Ultimate Warrior	Main Eventer	97
+1991	Randy Savage	Entertainer	96
+1991	Undertaker	Powerhouse	95
+1991	Ric Flair	Main Eventer	94
+1991	Jake Roberts	Entertainer	93
+1991	Mr Perfect	Specialist	92
+1991	Ted DiBiase	Main Eventer	91
+1991	Bret Hart	Specialist	90
+1991	Earthquake	Powerhouse	89
+1992	Bret Hart	Main Eventer	96
+1992	Ric Flair	Main Eventer	95
+1992	Randy Savage	Main Eventer	94
+1992	Shawn Michaels	Specialist	93
+1992	Ultimate Warrior	Powerhouse	92
+1992	Undertaker	Powerhouse	91
+1992	Mr Perfect	Specialist	90
+1992	British Bulldog	Specialist	89
+1992	Razor Ramon	Entertainer	88
+1992	Papa Shango	Entertainer	87
+1993	Bret Hart	Main Eventer	95
+1993	Yokozuna	Powerhouse	94
+1993	Undertaker	Powerhouse	93
+1993	Shawn Michaels	Specialist	92
+1993	Razor Ramon	Entertainer	91
+1993	Lex Luger	Main Eventer	90
+1993	Mr Perfect	Specialist	89
+1993	Doink	Entertainer	88
+1993	Crush	Powerhouse	87
+1993	Bam Bam Bigelow	Powerhouse	86
+1994	Bret Hart	Main Eventer	96
+1994	Undertaker	Powerhouse	95
+1994	Shawn Michaels	Specialist	94
+1994	Razor Ramon	Entertainer	93
+1994	Diesel	Powerhouse	92
+1994	Owen Hart	Specialist	91
+1994	Yokozuna	Powerhouse	90
+1994	Lex Luger	Main Eventer	89
+1994	Jeff Jarrett	Entertainer	88
+1994	Bam Bam Bigelow	Powerhouse	87
+1995	Diesel	Main Eventer	93
+1995	Bret Hart	Main Eventer	92
+1995	Shawn Michaels	Specialist	91
+1995	Undertaker	Powerhouse	90
+1995	Razor Ramon	Entertainer	89
+1995	Owen Hart	Specialist	88
+1995	Yokozuna	Powerhouse	87
+1995	British Bulldog	Specialist	86
+1995	Jeff Jarrett	Entertainer	85
+1995	Bam Bam Bigelow	Powerhouse	84
+1996	Shawn Michaels	Main Eventer	97
+1996	Bret Hart	Main Eventer	96
+1996	Undertaker	Powerhouse	95
+1996	Steve Austin	Specialist	94
+1996	Vader	Powerhouse	93
+1996	Owen Hart	Specialist	92
+1996	Mankind	Entertainer	91
+1996	Sycho Sid	Powerhouse	90
+1996	British Bulldog	Specialist	89
+1996	Goldust	Entertainer	88
+1997	Steve Austin	Main Eventer	98
+1997	Bret Hart	Main Eventer	97
+1997	Shawn Michaels	Main Eventer	96
+1997	Undertaker	Main Eventer	95
+1997	Owen Hart	Specialist	94
+1997	Vader	Powerhouse	93
+1997	Mankind	Entertainer	92
+1997	Triple H	Specialist	91
+1997	Goldust	Entertainer	90
+1997	Ken Shamrock	Specialist	89
+1998	Steve Austin	Main Eventer	99
+1998	The Rock	Entertainer	97
+1998	Undertaker	Main Eventer	96
+1998	Kane	Powerhouse	95
+1998	Mankind	Entertainer	94
+1998	Triple H	Specialist	93
+1998	Ken Shamrock	Specialist	92
+1998	X-Pac	Specialist	91
+1998	Big Boss Man	Powerhouse	90
+1998	Val Venis	Entertainer	89
+1999	Steve Austin	Main Eventer	98
+1999	The Rock	Main Eventer	98
+1999	Triple H	Main Eventer	96
+1999	Undertaker	Powerhouse	95
+1999	Kane	Powerhouse	94
+1999	Mankind	Entertainer	93
+1999	Big Show	Powerhouse	92
+1999	Chris Jericho	Entertainer	91
+1999	X-Pac	Specialist	90
+1999	Road Dogg	Entertainer	89
+2000	The Rock	Main Eventer	99
+2000	Triple H	Main Eventer	97
+2000	Kurt Angle	Specialist	96
+2000	Undertaker	Powerhouse	95
+2000	Kane	Powerhouse	94
+2000	Chris Jericho	Entertainer	93
+2000	Chris Benoit	Specialist	92
+2000	Eddie Guerrero	Specialist	91
+2000	Rikishi	Powerhouse	90
+2000	Steve Austin	Main Eventer	88
+2001	Steve Austin	Main Eventer	99
+2001	The Rock	Main Eventer	98
+2001	Kurt Angle	Specialist	97
+2001	Undertaker	Powerhouse	96
+2001	Chris Jericho	Entertainer	95
+2001	Kane	Powerhouse	94
+2001	Triple H	Main Eventer	93
+2001	Rob Van Dam	Specialist	92
+2001	Booker T	Entertainer	91
+2001	The Big Show	Powerhouse	90
+2002	Triple H	Main Eventer	97
+2002	The Undertaker	Main Eventer	96
+2002	Kurt Angle	Specialist	95
+2002	Brock Lesnar	Main Eventer	94
+2002	Chris Jericho	Entertainer	94
+2002	The Rock	Main Eventer	93
+2002	Rob Van Dam	Specialist	92
+2002	Kane	Powerhouse	91
+2002	Eddie Guerrero	Specialist	90
+2002	Chris Benoit	Specialist	89
+2003	Brock Lesnar	Main Eventer	97
+2003	Kurt Angle	Specialist	96
+2003	Triple H	Main Eventer	95
+2003	Undertaker	Main Eventer	94
+2003	Eddie Guerrero	Specialist	93
+2003	Chris Benoit	Specialist	92
+2003	Kane	Powerhouse	91
+2003	John Cena	Entertainer	89
+2003	Big Show	Powerhouse	89
+2003	Rey Mysterio	Specialist	88
+2004	Triple H	Main Eventer	97
+2004	Chris Benoit	Specialist	96
+2004	Eddie Guerrero	Specialist	95
+2004	JBL	Main Eventer	94
+2004	Randy Orton	Main Eventer	93
+2004	Batista	Powerhouse	92
+2004	Undertaker	Powerhouse	91
+2004	Kurt Angle	Specialist	90
+2004	John Cena	Entertainer	90
+2004	Big Show	Powerhouse	88
+2005	Batista	Main Eventer	98
+2005	John Cena	Main Eventer	97
+2005	Triple H	Main Eventer	96
+2005	Eddie Guerrero	Specialist	95
+2005	Shawn Michaels	Specialist	94
+2005	Kurt Angle	Specialist	93
+2005	Undertaker	Powerhouse	92
+2005	Randy Orton	Main Eventer	91
+2005	Rey Mysterio	Specialist	90
+2005	JBL	Entertainer	89
+2006	John Cena	Main Eventer	98
+2006	Batista	Main Eventer	97
+2006	Edge	Entertainer	96
+2006	Undertaker	Main Eventer	95
+2006	Shawn Michaels	Specialist	94
+2006	Randy Orton	Main Eventer	93
+2006	Kurt Angle	Specialist	92
+2006	Rey Mysterio	Specialist	91
+2006	Booker T	Entertainer	90
+2006	Kane	Powerhouse	89
+2007	John Cena	Main Eventer	99
+2007	Batista	Main Eventer	97
+2007	Undertaker	Main Eventer	96
+2007	Edge	Entertainer	95
+2007	Shawn Michaels	Specialist	94
+2007	Randy Orton	Main Eventer	93
+2007	Jeff Hardy	Entertainer	92
+2007	Triple H	Main Eventer	91
+2007	Kane	Powerhouse	90
+2007	CM Punk	Specialist	89
+2008	John Cena	Main Eventer	98
+2008	Chris Jericho	Entertainer	97
+2008	Edge	Main Eventer	96
+2008	Undertaker	Main Eventer	95
+2008	Triple H	Main Eventer	94
+2008	Jeff Hardy	Entertainer	93
+2008	Shawn Michaels	Specialist	92
+2008	Batista	Main Eventer	91
+2008	CM Punk	Specialist	90
+2008	Kane	Powerhouse	89
+2009	John Cena	Main Eventer	98
+2009	Randy Orton	Main Eventer	97
+2009	Undertaker	Main Eventer	96
+2009	Jeff Hardy	Entertainer	95
+2009	CM Punk	Specialist	94
+2009	Chris Jericho	Entertainer	93
+2009	Edge	Main Eventer	92
+2009	Triple H	Main Eventer	91
+2009	Rey Mysterio	Specialist	90
+2009	Batista	Powerhouse	89
+2010	John Cena	Main Eventer	98
+2010	Randy Orton	Main Eventer	97
+2010	Edge	Main Eventer	96
+2010	Undertaker	Powerhouse	94
+2010	Kane	Powerhouse	93
+2010	Rey Mysterio	Specialist	93
+2010	Chris Jericho	Entertainer	92
+2010	The Miz	Entertainer	91
+2010	Sheamus	Powerhouse	90
+2010	CM Punk	Specialist	89
+2011	CM Punk	Main Eventer	99
+2011	John Cena	Main Eventer	98
+2011	Randy Orton	Main Eventer	96
+2011	Mark Henry	Powerhouse	94
+2011	Alberto Del Rio	Main Eventer	94
+2011	Christian	Entertainer	93
+2011	Sheamus	Powerhouse	92
+2011	The Miz	Entertainer	91
+2011	Rey Mysterio	Specialist	90
+2011	Wade Barrett	Entertainer	89
+2012	CM Punk	Main Eventer	98
+2012	John Cena	Main Eventer	97
+2012	Sheamus	Main Eventer	96
+2012	Dolph Ziggler	Specialist	94
+2012	Daniel Bryan	Specialist	93
+2012	Ryback	Powerhouse	92
+2012	Randy Orton	Main Eventer	92
+2012	Big Show	Powerhouse	91
+2012	Chris Jericho	Entertainer	90
+2012	The Miz	Entertainer	89
+2013	Daniel Bryan	Main Eventer	97
+2013	John Cena	Main Eventer	97
+2013	CM Punk	Main Eventer	96
+2013	Randy Orton	Main Eventer	95
+2013	Brock Lesnar	Powerhouse	94
+2013	Roman Reigns	Powerhouse	93
+2013	Dolph Ziggler	Specialist	92
+2013	Bray Wyatt	Entertainer	91
+2013	Big Show	Powerhouse	90
+2013	Mark Henry	Powerhouse	89
+2014	Daniel Bryan	Main Eventer	98
+2014	Brock Lesnar	Main Eventer	97
+2014	John Cena	Main Eventer	96
+2014	Seth Rollins	Specialist	95
+2014	Randy Orton	Main Eventer	94
+2014	Roman Reigns	Powerhouse	93
+2014	Dean Ambrose	Entertainer	92
+2014	Bray Wyatt	Entertainer	91
+2014	Dolph Ziggler	Specialist	90
+2014	Cesaro	Specialist	89
+2015	Seth Rollins	Main Eventer	98
+2015	Brock Lesnar	Main Eventer	97
+2015	Roman Reigns	Main Eventer	96
+2015	John Cena	Main Eventer	95
+2015	Kevin Owens	Specialist	94
+2015	Dean Ambrose	Entertainer	93
+2015	Bray Wyatt	Entertainer	92
+2015	Cesaro	Specialist	91
+2015	Dolph Ziggler	Specialist	90
+2015	Ryback	Powerhouse	89
+2016	AJ Styles	Main Eventer	97
+2016	Roman Reigns	Main Eventer	97
+2016	Kevin Owens	Main Eventer	96
+2016	Seth Rollins	Main Eventer	95
+2016	Dean Ambrose	Main Eventer	94
+2016	Chris Jericho	Entertainer	93
+2016	Bray Wyatt	Entertainer	92
+2016	Cesaro	Specialist	91
+2016	Sami Zayn	Specialist	90
+2016	Braun Strowman	Powerhouse	89
+2017	AJ Styles	Main Eventer	97
+2017	Brock Lesnar	Main Eventer	97
+2017	Roman Reigns	Main Eventer	96
+2017	Braun Strowman	Powerhouse	95
+2017	Seth Rollins	Main Eventer	94
+2017	Samoa Joe	Specialist	93
+2017	The Miz	Entertainer	92
+2017	Kevin Owens	Entertainer	91
+2017	Finn Balor	Specialist	90
+2017	Bray Wyatt	Entertainer	89
+2018	Daniel Bryan	Main Eventer	98
+2018	AJ Styles	Main Eventer	97
+2018	Seth Rollins	Main Eventer	96
+2018	Braun Strowman	Powerhouse	95
+2018	The Miz	Entertainer	94
+2018	Samoa Joe	Specialist	93
+2018	Randy Orton	Main Eventer	92
+2018	Jeff Hardy	Entertainer	91
+2018	Shinsuke Nakamura	Specialist	90
+2018	Dolph Ziggler	Specialist	89
+2019	Kofi Kingston	Main Eventer	97
+2019	Seth Rollins	Main Eventer	97
+2019	Daniel Bryan	Main Eventer	96
+2019	Bray Wyatt	Entertainer	95
+2019	Brock Lesnar	Powerhouse	94
+2019	AJ Styles	Specialist	93
+2019	Roman Reigns	Main Eventer	92
+2019	Kevin Owens	Entertainer	91
+2019	Ricochet	Specialist	90
+2019	Randy Orton	Main Eventer	89
+2020	Roman Reigns	Main Eventer	97
+2020	Drew McIntyre	Main Eventer	97
+2020	Randy Orton	Main Eventer	96
+2020	Bray Wyatt	Entertainer	95
+2020	AJ Styles	Specialist	94
+2020	Kevin Owens	Entertainer	93
+2020	Braun Strowman	Powerhouse	92
+2020	Keith Lee	Powerhouse	91
+2020	Seth Rollins	Entertainer	90
+2020	Daniel Bryan	Specialist	89
+2021	Roman Reigns	Main Eventer	98
+2021	Bobby Lashley	Powerhouse	97
+2021	Seth Rollins	Main Eventer	95
+2021	Big E	Entertainer	94
+2021	Drew McIntyre	Main Eventer	94
+2021	Edge	Entertainer	93
+2021	Randy Orton	Entertainer	92
+2021	AJ Styles	Specialist	91
+2021	Damian Priest	Specialist	90
+2021	Riddle	Specialist	89
+2022	Roman Reigns	Main Eventer	99
+2022	Cody Rhodes	Main Eventer	97
+2022	Seth Rollins	Entertainer	96
+2022	Sami Zayn	Entertainer	95
+2022	Gunther	Powerhouse	94
+2022	Drew McIntyre	Main Eventer	93
+2022	Kevin Owens	Entertainer	92
+2022	Bobby Lashley	Powerhouse	91
+2022	AJ Styles	Specialist	90
+2022	Sheamus	Specialist	89
+2023	Roman Reigns	Main Eventer	99
+2023	Cody Rhodes	Main Eventer	98
+2023	Seth Rollins	Main Eventer	97
+2023	LA Knight	Entertainer	96
+2023	Gunther	Powerhouse	95
+2023	Sami Zayn	Entertainer	94
+2023	Jey Uso	Entertainer	93
+2023	Kevin Owens	Entertainer	92
+2023	Drew McIntyre	Main Eventer	91
+2023	AJ Styles	Specialist	90
+2024	Cody Rhodes	Main Eventer	99
+2024	Roman Reigns	Main Eventer	98
+2024	Seth Rollins	Main Eventer	97
+2024	Gunther	Powerhouse	96
+2024	CM Punk	Entertainer	95
+2024	Drew McIntyre	Main Eventer	94
+2024	LA Knight	Entertainer	93
+2024	Jey Uso	Entertainer	92
+2024	Randy Orton	Entertainer	91
+2024	AJ Styles	Specialist	90
+2025	Cody Rhodes	Main Eventer	98
+2025	John Cena	Main Eventer	98
+2025	CM Punk	Entertainer	97
+2025	Gunther	Main Eventer	96
+2025	Seth Rollins	Main Eventer	95
+2025	Roman Reigns	Main Eventer	94
+2025	Jey Uso	Entertainer	93
+2025	Randy Orton	Entertainer	92
+2025	Drew McIntyre	Main Eventer	91
+2025	AJ Styles	Specialist	90
