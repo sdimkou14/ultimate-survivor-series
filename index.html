@@ -228,238 +228,36 @@ async function loadData(){
 
 function parseCSV(text){
   const rows = [];
-  let current = '', row = [], inQuotes = false;
-  for(let i=0;i<text.length;i++){
-    const ch = text[i], next = text[i+1];
-    if(ch === '"'){
-      if(inQuotes && next === '"'){ current += '"'; i++; }
-      else inQuotes = !inQuotes;
-    } else if(ch === ',' && !inQuotes){ row.push(current); current=''; }
-    else if((ch === '
-' || ch === '
-') && !inQuotes){
-      if(ch === '
-' && next === '
-') i++;
-      row.push(current); current='';
-      if(row.some(v => v.trim() !== '')) rows.push(row);
-      row=[];
-    } else current += ch;
-  }
-  if(current || row.length){ row.push(current); if(row.some(v => v.trim() !== '')) rows.push(row); }
-  if(rows.length < 2) return [];
-  const header = rows[0].map(h => h.trim().toLowerCase());
-  const yI = header.indexOf('year');
-  const wI = header.indexOf('wrestler');
-  const cI = header.indexOf('category');
-  const impactI = header.indexOf('impact') >= 0 ? header.indexOf('impact') : header.indexOf('overall');
-  if([yI,wI,cI,impactI].some(i => i < 0)) return [];
-  return rows.slice(1).map(r => ({
-    year: Number(r[yI]), wrestler: String(r[wI] || '').trim(), category: String(r[cI] || '').trim(), impact: Number(r[impactI])
-  })).filter(d => d.year && d.wrestler && d.category && d.impact);
-}
-
-function newState(){
-  return { team:{}, usedYears:[], usedWrestlers:[], currentYear:null, currentRoster:[], respinUsed:false, awaitingPick:false, completed:false };
-}
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById(id);
-  if(target) target.classList.add('active');
-  if(id === 'hof') renderLeaderboard();
-}
-function categoryClass(category){ return String(category).replace(/\s+/g,'-'); }
-function totalScore(){ return game ? Object.values(game.team).reduce((sum,p)=>sum+(p?.impact||0),0) : 0; }
-function filledCount(){ return game ? Object.keys(game.team).length : 0; }
-function uniq(arr){ return [...new Set(arr)]; }
-function allYears(){ return uniq(DATA.map(d=>d.year)).sort((a,b)=>a-b); }
-function remainingYears(){ return allYears().filter(y => !game.usedYears.includes(y)); }
-function openSlotsFor(w){
-  const slots = [];
-  if(REQUIRED_SLOTS.includes(w.category) && !game.team[w.category]) slots.push(w.category);
-  if(!game.team.Captain) slots.push('Captain');
-  return slots;
-}
-function validWrestlersForYear(year){
-  return DATA.filter(w => w.year === year && !game.usedWrestlers.includes(w.wrestler) && openSlotsFor(w).length > 0);
-}
-function validRemainingYears(excludeYear=null){
-  return remainingYears().filter(y => y !== excludeYear && validWrestlersForYear(y).length > 0);
-}
-function resultForScore(score){
-  if(score >= 480) return '5-0';
-  if(score >= 475) return '4-1';
-  if(score >= 470) return '3-2';
-  if(score >= 465) return '2-3';
-  if(score >= 460) return '1-4';
-  return '0-5';
-}
-function startGame(){
-  game = newState();
-  completedGameSaved = false;
-  track('game_started');
-  showScreen('game');
-  renderGame();
-}
-function setCurrentYear(year){
-  game.currentYear = year;
-  game.currentRoster = DATA.filter(w => w.year === year).sort((a,b)=>b.impact-a.impact || a.wrestler.localeCompare(b.wrestler));
-}
-function spinYear(){
-  if(!game) startGame();
-  if(game.awaitingPick) return;
-  const years = validRemainingYears();
-  if(!years.length){ alert('No valid years remain for your open slots.'); return; }
-  const y = years[Math.floor(Math.random()*years.length)];
-  setCurrentYear(y);
-  game.awaitingPick = true;
-  renderGame();
-}
-function respinYear(){
-  if(!game || game.respinUsed || !game.awaitingPick) return;
-  const years = validRemainingYears(game.currentYear);
-  if(!years.length){ alert('No other valid unused years remain.'); return; }
-  game.respinUsed = true;
-  track('respin_used', { pick_number: filledCount()+1 });
-  const y = years[Math.floor(Math.random()*years.length)];
-  setCurrentYear(y);
-  renderGame();
-}
-function chooseWrestler(w, slot){
-  if(!game || !game.awaitingPick || game.team[slot]) return;
-  if(game.usedWrestlers.includes(w.wrestler)) return;
-  if(slot !== 'Captain' && slot !== w.category) return;
-  game.team[slot] = w;
-  game.usedWrestlers.push(w.wrestler);
-  game.usedYears.push(w.year);
-  game.currentYear = null;
-  game.currentRoster = [];
-  game.awaitingPick = false;
-  if(filledCount() === 5) finishGame();
-  else renderGame();
-}
-function finishGame(){
-  game.completed = true;
-  const score = totalScore();
-  track('game_completed', { score, record: resultForScore(score) });
-  showResult();
-}
-function showResult(){
-  const score = totalScore();
-  document.getElementById('finalScore').textContent = score;
-  document.getElementById('resultRecord').textContent = resultForScore(score);
-  const finalTeam = document.getElementById('finalTeam');
-  finalTeam.innerHTML = '';
-  ALL_SLOTS.forEach(slot => finalTeam.appendChild(slotNode(slot, game.team[slot] || null)));
-  showScreen('result');
-  evaluateLeaderboardQualification();
-}
-function slotNode(slot,p){
-  const div = document.createElement('div');
-  div.className = 'slot ' + (p ? categoryClass(p.category) : 'empty');
-  div.innerHTML = `<div class="slot-title">${slot}</div>${p ? `<div class="slot-name">${escapeHTML(p.year + ' ' + p.wrestler)}</div><div class="slot-meta">${escapeHTML(p.category)} • Impact: ${p.impact}</div>` : '<div class="slot-name">Empty</div><div class="slot-meta">Waiting for pick</div>'}`;
-  return div;
-}
-function renderSlots(){
-  const slots = document.getElementById('slots');
-  slots.innerHTML='';
-  ALL_SLOTS.forEach(slot => slots.appendChild(slotNode(slot, game.team[slot] || null)));
-}
-function renderGame(){
-  renderSlots();
-  document.getElementById('turnPill').textContent = Math.min(filledCount()+1,5) + '/5';
-  document.getElementById('scorePill').textContent = totalScore();
-  document.getElementById('respinPill').textContent = game.respinUsed ? 'Used' : 'Available';
-  document.getElementById('currentYear').textContent = game.currentYear || '—';
-  document.getElementById('yearHelp').textContent = game.awaitingPick ? 'Choose one wrestler from this year.' : 'Press Spin Year for your next pick.';
-  document.getElementById('spinBtn').disabled = game.awaitingPick;
-  document.getElementById('respinBtn').disabled = !game.awaitingPick || game.respinUsed;
-  renderWrestlers();
-}
-function renderWrestlers(){
-  const box = document.getElementById('wrestlers');
-  box.innerHTML = '';
-  if(!game.currentRoster.length){ box.innerHTML = '<p class="hint">No year spun yet.</p>'; return; }
-  game.currentRoster.forEach(w => {
-    const openSlots = openSlotsFor(w);
-    const usedW = game.usedWrestlers.includes(w.wrestler);
-    const disabled = usedW || openSlots.length === 0;
-    const card = document.createElement('div');
-    card.className = `wrestler-card ${categoryClass(w.category)}${disabled ? ' disabled' : ''}`;
-    card.innerHTML = `
-      <div class="wrestler-score"><small>Impact</small>${w.impact}</div>
-      <div class="wrestler-year">${w.year}</div>
-      <div class="wrestler-name">${escapeHTML(w.wrestler)}</div>
-      <span class="cat-badge badge-${categoryClass(w.category)}">${escapeHTML(w.category)}</span>
-      <div class="slot-buttons"></div>
-      ${disabled ? `<span class="lock-reason">${usedW ? 'Wrestler already used' : 'No open slot available'}</span>` : ''}
-    `;
-    if(!disabled){
-      card.addEventListener('click', () => {
-        const buttonBox = card.querySelector('.slot-buttons');
-        document.querySelectorAll('.slot-buttons').forEach(b => { if(b !== buttonBox) { b.style.display='none'; b.innerHTML=''; } });
-        if(openSlots.length === 1) chooseWrestler(w, openSlots[0]);
-        else {
-          buttonBox.innerHTML = '<div class="hint">Choose slot:</div>';
-          openSlots.forEach(slot => {
-            const btn = document.createElement('button');
-            btn.type = 'button'; btn.textContent = slot;
-            btn.addEventListener('click', (e) => { e.stopPropagation(); chooseWrestler(w, slot); });
-            buttonBox.appendChild(btn);
-          });
-          buttonBox.style.display='block';
-        }
-      });
+  let current = '';
+  let row = [];
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const next = text[i + 1];
+    if (ch === '"') {
+      if (inQuotes && next === '"') {
+        current += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (ch === ',' && !inQuotes) {
+      row.push(current);
+      current = '';
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && next === '\n') i++;
+      row.push(current);
+      current = '';
+      if (row.some(v => String(v).trim() !== '')) rows.push(row);
+      row = [];
+    } else {
+      current += ch;
     }
-    box.appendChild(card);
-  });
-}
-async function getTop50(){
-  try {
-    const q = query(leaderboardRef, orderBy('score','desc'), orderBy('createdAt','asc'), limit(50));
-    const snap = await getDocs(q);
-    currentLeaderboard = snap.docs.map(d => ({ id:d.id, ...d.data() }));
-    return currentLeaderboard;
-  } catch(e) {
-    console.error(e);
-    currentLeaderboard = [];
-    return [];
   }
+  row.push(current);
+  if (row.some(v => String(v).trim() !== '')) rows.push(row);
+  return rows;
 }
-async function evaluateLeaderboardQualification(){
-  const score = totalScore();
-  const top = await getTop50();
-  const qualifies = top.length < 50 || score >= Number(top[top.length-1]?.score || 0);
-  document.getElementById('qualifyBox').style.display = qualifies ? 'block' : 'none';
-  document.getElementById('missBox').style.display = qualifies ? 'none' : 'block';
-}
-function compactTeam(){
-  return ALL_SLOTS.map(slot => {
-    const p = game.team[slot];
-    return { slot, year:p.year, wrestler:p.wrestler, category:p.category, impact:p.impact };
-  });
-}
-
-const BANNED_NICKNAME_WORDS = [
-  'fuck','fuk','fck','fukin','fucking','fk','fkn','fux','phuck',
-  'shit','sh1t','shite','shitty','sht',
-  'cunt','cnt','kunt',
-  'bitch','b1tch','biatch',
-  'dick','dik','d1ck',
-  'cock','cok','c0ck',
-  'penis','p3nis','peen',
-  'vagina','vag','vjay',
-  'pussy','pussi','pussie',
-  'ass','arse','asshole','arsehole','a55',
-  'wanker','twat','slut','whore','hoe',
-  'sex','sexy','porn','porno','xxx','rape','rapist',
-  'pedo','paedo','paedophile','pedophile','molester',
-  'nigger','nigga','niggah','niger','negro',
-  'fag','faggot','fagot',
-  'gay','poof','poofta','poofter','dyke','lesbian',
-  'retard','retarded','spastic',
-  'hitler','nazi','kkk'
-];
 function normaliseNicknameForCheck(name){
   return String(name).toLowerCase()
     .replace(/[\s._\-]+/g,'')
@@ -526,8 +324,7 @@ function copyResult(){
   const lines = [`Survivor 5-0`, `Score: ${score}`, `Record: ${resultForScore(score)}`, ''];
   ALL_SLOTS.forEach(slot => { const p = game.team[slot]; lines.push(`${slot}: ${p.year} ${p.wrestler} (${p.impact})`); });
   lines.push('', 'survivor5-0.com');
-  navigator.clipboard?.writeText(lines.join('
-'));
+  navigator.clipboard?.writeText(lines.join('\n'));
 }
 function escapeHTML(str){
   return String(str).replace(/[&<>'"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));
